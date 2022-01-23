@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget {
         // navigationBarTheme
         //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
         fontFamily: 'Poppins',
+        textTheme: const TextTheme(headline1: TextStyle(color: Colors.white)),
       
         scaffoldBackgroundColor: const Color(0xff0c136d),
-        
+        primarySwatch: Colors.deepPurple,
        
-        primarySwatch:  Colors.deepPurple,
+       
       ),
       home: const Loginscreen(),
     );
