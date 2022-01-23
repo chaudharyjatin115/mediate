@@ -39,7 +39,7 @@ class Loginscreen extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
+                children: const [
                   ThirdPartySignInButton(
                     assetLink: 'assets/images/google-logo.png',
                   ),
@@ -57,7 +57,7 @@ class Loginscreen extends StatelessWidget {
                     'Not a member ? ',
                     style: TextStyle(color: Colors.white),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 1,
                   ),
                   TextButton(
@@ -78,8 +78,9 @@ class Loginscreen extends StatelessWidget {
 }
 
 class ThirdPartySignInButton extends StatelessWidget {
-  String? assetLink;
-  ThirdPartySignInButton({Key? key, required this.assetLink}) : super(key: key);
+  final String? assetLink;
+  const ThirdPartySignInButton({Key? key, required this.assetLink})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

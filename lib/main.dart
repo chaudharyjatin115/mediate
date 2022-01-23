@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mediate/screens%20/on_boarding_screen.dart';
 
-import 'screens /login_screen.dart';
+
 
 
 void main() {
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
        
        
       ),
-      home: const Loginscreen(),
+      home: const OnBoardingScreen()
     );
   }
 }
