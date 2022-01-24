@@ -21,7 +21,7 @@ class OnBoardingScreen extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(bottom: 20.0),
                 child: Text(
-                  'Medicate',
+                  'Mediate',
                   style: TextStyle(
                       fontSize: 40.0,
                       color: Colors.white,
@@ -29,7 +29,7 @@ class OnBoardingScreen extends StatelessWidget {
                 ),
               ),
               const Text(
-                'Welcome to Medicate ',
+                'Welcome to Mediate ',
                 style: TextStyle(color: Colors.white),
               ),
               const Text(
