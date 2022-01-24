@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediate/widgets/image_header.dart';
+import 'package:mediate/widgets/mood_bar.dart';
 
 
 class HomeScreen extends StatelessWidget {
@@ -10,7 +11,19 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          children: const [ImageHeader()],
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: const [
+            ImageHeader(),
+            MoodBar(),
+            Padding(
+              padding: EdgeInsets.only(left: 25),
+              child: Text(
+                'Recently Played',
+                style: TextStyle(color: Colors.white),
+              ),
+            ),
+          ],
         ),
       ),
     );

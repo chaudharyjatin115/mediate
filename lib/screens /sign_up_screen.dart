@@ -34,10 +34,12 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   ThirdPartySignInButton(
+                      onTap: () {},
                       assetLink: 'assets/images/facebook-logo.png'),
                   ThirdPartySignInButton(
+                      onTap: () {},
                       assetLink: 'assets/images/google-logo.png'),
                 ],
               ),
@@ -47,57 +49,60 @@ class SignUpScreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
-                  Padding(
+                children: [
+                  const Padding(
                     padding: EdgeInsets.only(left: 25.0),
                     child: Text(
                       'Name',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  InputTextField(title: 'Enter your Name', isTrue: false),
-                  SizedBox(
+                  const InputTextField(title: 'Enter your Name', isTrue: false),
+                  const SizedBox(
                     height: 20.0,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 25.0),
                     child: Text(
                       'Email',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
-                  InputTextField(title: 'Enter Your email', isTrue: false),
-                  SizedBox(
+                  const InputTextField(
+                      title: 'Enter Your email', isTrue: false),
+                  const SizedBox(
                     height: 15.0,
                   ),
-                  Padding(
+                  const Padding(
                     padding: EdgeInsets.only(left: 25.0),
                     child: Text(
                       'Password',
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10.0,
                   ),
-                  InputTextField(title: 'Pick a Strong Password', isTrue: true),
-                  SizedBox(
+                  const InputTextField(
+                      title: 'Pick a Strong Password', isTrue: true),
+                  const SizedBox(
                     height: 30.0,
                   ),
-                  CustomLoginButton(
+                  const CustomLoginButton(
                       buttonColor: Colors.black12, title: 'Sign up'),
-                  SizedBox(
+                  const SizedBox(
                     height: 30.0,
                   ),
                   AlreadyAccountWidget(
                     primaryText: 'already a member ?',
                     secondaryText: 'Log in',
+                    onTap: () {},
                   ),
                 ],
               ),

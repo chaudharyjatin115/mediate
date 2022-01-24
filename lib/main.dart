@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:mediate/screens%20/on_boarding_screen.dart';
-import 'package:mediate/screens%20/sign_up_screen.dart';
+import 'package:mediate/screens%20/home_screen.dart';
+
 
 
 
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff05164a),
         primarySwatch: Colors.deepPurple,
       ),
-      home: const SignUpScreen(),
+      home: const HomeScreen(),
     );
   }
 }

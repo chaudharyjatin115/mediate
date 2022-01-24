@@ -47,18 +47,24 @@ class Loginscreen extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   ThirdPartySignInButton(
+                    onTap: () {},
                     assetLink: 'assets/images/google-logo.png',
                   ),
                   ThirdPartySignInButton(
+                      onTap: () {},
                       assetLink: 'assets/images/facebook-logo.png'),
                 ],
               ),
               const SizedBox(
                 height: 40,
               ),
-             const  AlreadyAccountWidget(primaryText: 'Not a member ? ',secondaryText: 'Register Now',),
+              AlreadyAccountWidget(
+                primaryText: 'Not a member ? ',
+                secondaryText: 'Register Now',
+                onTap: () {},
+              ),
             ],
           ),
         ),

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class CustomLoginButton extends StatelessWidget {
   final Color? buttonColor;
   final String? title;
+  final Function()? onTap;
   const CustomLoginButton(
-      {Key? key, required this.buttonColor, required this.title})
+      {Key? key, required this.buttonColor, required this.title, this.onTap})
       : super(key: key);
 
   @override
@@ -14,7 +15,7 @@ class CustomLoginButton extends StatelessWidget {
       height: 60,
       width: 375.0,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         child: Text(title!),
         style: ElevatedButton.styleFrom(
             primary: buttonColor,
