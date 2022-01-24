@@ -14,12 +14,14 @@ class InputTextField extends StatelessWidget {
         width: 380.0,
         color: Colors.black12,
         child: TextField(
+        style:const  TextStyle(color: Colors.white),
           obscureText: isTrue!,
           textAlign: TextAlign.start,
           autocorrect: false,
           autofocus: true,
           decoration: InputDecoration(
             fillColor: Colors.grey,
+          
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(10.0),
             ),
