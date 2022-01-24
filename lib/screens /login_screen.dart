@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/widgets/custom_input-field.dart';
+import 'package:mediate/widgets/custom_input_field.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
 import 'package:mediate/widgets/third_party_signIn_button.dart';
 import 'package:mediate/widgets/welcome_text_Login.dart';
@@ -18,14 +18,14 @@ class Loginscreen extends StatelessWidget {
             children: [
               const WelcomeText(),
               const SizedBox(height: 50),
-              InputTextField(
+              const InputTextField(
                 title: 'Enter Username',
                 isTrue: false,
               ),
               const SizedBox(
                 height: 20.0,
               ),
-              InputTextField(
+              const InputTextField(
                 title: 'EnterPassword',
                 isTrue: true,
               ),

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class InputTextField extends StatelessWidget {
-  String? title;
-  bool? isTrue;
-  InputTextField({Key? key, required this.title, required this.isTrue})
+  final String? title;
+  final bool? isTrue;
+  const InputTextField({Key? key, required this.title, required this.isTrue})
       : super(key: key);
 
   @override
