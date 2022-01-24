@@ -34,11 +34,11 @@ class OnBoardingScreen extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               Text(
-                'A wonderful ASMR app with different ASMR ',
+                'A wonderful Streaming app with different ASMR ',
                 style: TextStyle(color: Colors.white),
               ),
               Text(
-                'sounds to make you calm',
+                'sounds to calm you through power of ASMR',
                 style: TextStyle(color: Colors.white),
               ),
               SizedBox(

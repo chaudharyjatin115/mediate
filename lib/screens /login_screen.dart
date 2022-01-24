@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediate/widgets/already_account_widget.dart';
 import 'package:mediate/widgets/custom_input_field.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
 import 'package:mediate/widgets/third_party_signIn_button.dart';
@@ -57,25 +58,7 @@ class Loginscreen extends StatelessWidget {
               const SizedBox(
                 height: 40,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Not a member ? ',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(
-                    width: 1,
-                  ),
-                  TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      'Register Now',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  )
-                ],
-              ),
+             const  AlreadyAccountWidget(primaryText: 'Not a member ? ',secondaryText: 'Register Now',),
             ],
           ),
         ),
@@ -83,6 +66,8 @@ class Loginscreen extends StatelessWidget {
     );
   }
 }
+
+
 
 
 
