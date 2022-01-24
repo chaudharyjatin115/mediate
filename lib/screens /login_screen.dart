@@ -33,9 +33,12 @@ class Loginscreen extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const CustomLoginButton(
+              CustomLoginButton(
                 buttonColor: Colors.black12,
                 title: 'Sign in',
+                onTap: () {
+                  Navigator.pushNamed(context, 'HomeScreen');
+                },
               ),
               const SizedBox(height: 50),
               const Text(
@@ -63,7 +66,9 @@ class Loginscreen extends StatelessWidget {
               AlreadyAccountWidget(
                 primaryText: 'Not a member ? ',
                 secondaryText: 'Register Now',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, 'SignUpScreen');
+                },
               ),
             ],
           ),

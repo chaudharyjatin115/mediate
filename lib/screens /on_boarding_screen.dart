@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
 
-
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
 
@@ -14,12 +13,12 @@ class OnBoardingScreen extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
-            children: const [
-              Image(
+            children: [
+              const Image(
                 height: 350,
                 image: AssetImage('assets/images/Meditation-working.jpg'),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.only(bottom: 20.0),
                 child: Text(
                   'Medicate',
@@ -29,31 +28,37 @@ class OnBoardingScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              Text(
+              const Text(
                 'Welcome to Medicate ',
                 style: TextStyle(color: Colors.white),
               ),
-              Text(
+              const Text(
                 'A wonderful Streaming app with different ASMR ',
                 style: TextStyle(color: Colors.white),
               ),
-              Text(
+              const Text(
                 'sounds to calm you through power of ASMR',
                 style: TextStyle(color: Colors.white),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               CustomLoginButton(
                 title: 'Get Started',
                 buttonColor: Colors.black12,
+                onTap: () {
+                  Navigator.pushNamed(context, 'SignUpScreen');
+                },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               CustomLoginButton(
                 title: 'Log in',
                 buttonColor: Colors.black12,
+                onTap: () {
+                  Navigator.pushNamed(context, 'LoginScreen');
+                },
               )
             ],
           ),

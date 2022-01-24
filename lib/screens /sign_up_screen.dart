@@ -39,8 +39,7 @@ class SignUpScreen extends StatelessWidget {
                       onTap: () {},
                       assetLink: 'assets/images/facebook-logo.png'),
                   ThirdPartySignInButton(
-                      onTap: () {},
-                      assetLink: 'assets/images/google-logo.png'),
+                      onTap: () {}, assetLink: 'assets/images/google-logo.png'),
                 ],
               ),
               const SizedBox(
@@ -94,7 +93,10 @@ class SignUpScreen extends StatelessWidget {
                   const SizedBox(
                     height: 30.0,
                   ),
-                  const CustomLoginButton(
+                  CustomLoginButton(
+                      onTap: () {
+                        Navigator.pushNamed(context, 'HomeScreen');
+                      },
                       buttonColor: Colors.black12, title: 'Sign up'),
                   const SizedBox(
                     height: 30.0,
@@ -102,7 +104,9 @@ class SignUpScreen extends StatelessWidget {
                   AlreadyAccountWidget(
                     primaryText: 'already a member ?',
                     secondaryText: 'Log in',
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.pushNamed(context, 'LoginScreen');
+                    },
                   ),
                 ],
               ),

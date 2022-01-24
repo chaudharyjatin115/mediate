@@ -5,7 +5,10 @@ class CustomLoginButton extends StatelessWidget {
   final String? title;
   final Function()? onTap;
   const CustomLoginButton(
-      {Key? key, required this.buttonColor, required this.title, this.onTap})
+      {Key? key,
+      required this.buttonColor,
+      required this.title,
+      required this.onTap})
       : super(key: key);
 
   @override
