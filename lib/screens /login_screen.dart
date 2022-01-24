@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mediate/widgets/custom_input-field.dart';
+import 'package:mediate/widgets/custom_login_button.dart';
+import 'package:mediate/widgets/third_party_signIn_button.dart';
+import 'package:mediate/widgets/welcome_text_Login.dart';
 
 class Loginscreen extends StatelessWidget {
   const Loginscreen({Key? key}) : super(key: key);
@@ -80,128 +84,9 @@ class Loginscreen extends StatelessWidget {
   }
 }
 
-class ThirdPartySignInButton extends StatelessWidget {
-  final String? assetLink;
-  const ThirdPartySignInButton({Key? key, required this.assetLink})
-      : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {},
-      child: Container(
-          height: 55,
-          width: 45,
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0), color: Colors.black12),
-          child: Image.asset(assetLink!)),
-    );
-  }
-}
 
-class CustomLoginButton extends StatelessWidget {
-  final Color? buttonColor;
-  final String? title;
-  const CustomLoginButton(
-      {Key? key, required this.buttonColor, required this.title})
-      : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-      height: 60,
-      width: 375.0,
-      child: ElevatedButton(
-        onPressed: () {},
-        child: Text(title!),
-        style: ElevatedButton.styleFrom(
-            primary: buttonColor,
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10))),
-      ),
-    );
-  }
-}
 
 // ignore: must_be_immutable
-class InputTextField extends StatelessWidget {
-  String? title;
-  bool? isTrue;
-  InputTextField({Key? key, required this.title, required this.isTrue})
-      : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Container(
-        width: 380.0,
-        color: Colors.black12,
-        child: TextField(
-          obscureText: isTrue!,
-          textAlign: TextAlign.start,
-          autocorrect: false,
-          autofocus: true,
-          decoration: InputDecoration(
-            fillColor: Colors.grey,
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            hintText: title,
-            hintStyle: const TextStyle(fontSize: 12, color: Colors.white),
-          ),
-        ),
-      ),
-    );
-  }
-}
 
-class WelcomeText extends StatelessWidget {
-  const WelcomeText({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 40),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
-          Center(
-            child: Text(
-              'Hello Again!',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 26.0,
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
-          SizedBox(
-            height: 12.0,
-          ),
-          Center(
-            child: Text(
-              'Welcome  back  you ! ve',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w100),
-            ),
-          ),
-          Center(
-            child: Text(
-              'been  misssed !',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18.0,
-                  fontWeight: FontWeight.w100),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
