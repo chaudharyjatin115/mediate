@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/screens%20/on_boarding_screen.dart';
+
+
+
+import 'screens /home_screen.dart';
 
 
 
@@ -23,12 +26,12 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Poppins',
         textTheme: const TextTheme(headline1: TextStyle(color: Colors.white)),
       
-        scaffoldBackgroundColor: const Color(0xff0c136d),
+        scaffoldBackgroundColor: const Color(0xff05164a),
         primarySwatch: Colors.deepPurple,
        
        
       ),
-      home: const OnBoardingScreen()
+      home: const HomeScreen(),
     );
   }
 }
