@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff05164a),
         primarySwatch: Colors.deepPurple,
       ),
-    initialRoute: 'OnBoardScreen',
+      initialRoute: 'HomeScreen',
       // ignore: prefer_const_constructors
       routes: {'OnBoardScreen':(contex)=>OnBoardingScreen(),
       'LoginScreen':(context)=>const Loginscreen(),
