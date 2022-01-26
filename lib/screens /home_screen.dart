@@ -33,15 +33,19 @@ class HomeScreen extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               return Stack(
                 children: [
-                  Container(
-                    height: 200,
-                    width: 200,
-                    child: const Text(
-                      'Hello',
-                    ),
-                    decoration: BoxDecoration(
-                      image: DecorationImage(fit: BoxFit.cover,
-                        image: AssetImage('${audios[index].coverImage}'),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      height: 200,
+                      width: 200,
+                      child: const Text(
+                        'Hello',
+                      ),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(fit: BoxFit.cover,
+                          image: AssetImage('${audios[index].coverImage}'),
+
+                        ),borderRadius:BorderRadius.circular(13.0)
                       ),
                     ),
                   ),
