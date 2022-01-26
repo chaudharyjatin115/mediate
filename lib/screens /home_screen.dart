@@ -22,6 +22,7 @@ class HomeScreen extends StatelessWidget {
                 'Recently Played',
                 style: TextStyle(color: Colors.white),
               ),
+
             ),
           ],
         ),
