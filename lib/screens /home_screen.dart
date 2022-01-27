@@ -36,8 +36,8 @@ class HomeScreen extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Container(
-                      height: 200,
-                      width: 200,
+                      height: 180,
+                      width: 150,
                       child: const Text(
                         'Hello',
                       ),
@@ -45,7 +45,9 @@ class HomeScreen extends StatelessWidget {
                         image: DecorationImage(fit: BoxFit.cover,
                           image: AssetImage('${audios[index].coverImage}'),
 
-                        ),borderRadius:BorderRadius.circular(13.0)
+                        ),
+                        borderRadius: BorderRadius.circular(13.0),
+                      
                       ),
                     ),
                   ),
