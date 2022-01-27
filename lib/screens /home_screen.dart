@@ -38,8 +38,8 @@ class HomeScreen extends StatelessWidget {
                     child: Container(
                       height: 180,
                       width: 150,
-                      child: const Text(
-                        'Hello',
+                      child: Container(
+                        child: Text('${audios[index].name}'),
                       ),
                       decoration: BoxDecoration(
                         image: DecorationImage(fit: BoxFit.cover,
@@ -47,6 +47,21 @@ class HomeScreen extends StatelessWidget {
 
                         ),
                         borderRadius: BorderRadius.circular(13.0),
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              end: Alignment.bottomLeft,
+                              stops: const [
+                                0.1,
+                                0.4,
+                                0.6,
+                                0.9
+                              ],
+                              colors: [
+                                Colors.black.withOpacity(0.3),
+                                Colors.black87.withOpacity(0.3),
+                                Colors.black54.withOpacity(0.3),
+                                Colors.black38.withOpacity(0.3)
+                              ])
                       
                       ),
                     ),
