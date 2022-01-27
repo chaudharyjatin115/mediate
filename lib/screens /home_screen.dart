@@ -39,6 +39,9 @@ class HomeScreen extends StatelessWidget {
                       height: 180,
                       width: 150,
                       child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
                         child: Text('${audios[index].name}'),
                       ),
                       decoration: BoxDecoration(
