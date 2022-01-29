@@ -16,7 +16,8 @@ class ThirdPartySignInButton extends StatelessWidget {
           width: 45,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.0), color: Colors.black12),
-          child: Image.asset(assetLink!)),
+        child: Image.asset(assetLink!),
+      ),
     );
   }
 }
