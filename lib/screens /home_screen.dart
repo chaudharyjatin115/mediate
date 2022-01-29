@@ -44,7 +44,11 @@ class HomeScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               borderRadius: const BorderRadius.only(topLeft:Radius.circular(8.0),
                                   topRight: Radius.circular(8.0) ),
+                                  
                               image: DecorationImage(
+                                 colorFilter: ColorFilter.mode(
+                                    Colors.black.withOpacity(0.8),
+                                    BlendMode.dstATop),
                                 fit: BoxFit.cover,
                                 image: AssetImage('${audios[index].coverImage}'),
                               ),
