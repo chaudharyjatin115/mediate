@@ -29,7 +29,7 @@ class AlreadyAccountWidget extends StatelessWidget {
             secondaryText!,
             style: const TextStyle(color: Colors.blue),
           ),
-        )
+        ),
       ],
     );
   }
