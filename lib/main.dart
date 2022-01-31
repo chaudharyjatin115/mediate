@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:mediate/screens%20/home_screen.dart';
 import 'package:mediate/screens%20/login_screen.dart';
 import 'package:mediate/screens%20/on_boarding_screen.dart';
+import 'package:mediate/screens%20/playlist_screen.dart';
 import 'package:mediate/screens%20/sign_up_screen.dart';
 
 
@@ -34,12 +35,13 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: const Color(0xff05164a),
         primarySwatch: Colors.deepPurple,
       ),
-      initialRoute: 'HomeScreen',
+      initialRoute: 'PlayListScreen',
       // ignore: prefer_const_constructors
       routes: {'OnBoardScreen':(contex)=>OnBoardingScreen(),
       'LoginScreen':(context)=>const Loginscreen(),
       'SignUpScreen':(context)=>const SignUpScreen(),
       'HomeScreen':(context)=>const HomeScreen(),
+        'PlayListScreen': (contex) => const PlayListScreen(),
 
        
       },
