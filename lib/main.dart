@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      
       theme: ThemeData(
 
         // navigationBarTheme
@@ -39,8 +40,10 @@ class MyApp extends StatelessWidget {
       'LoginScreen':(context)=>const Loginscreen(),
       'SignUpScreen':(context)=>const SignUpScreen(),
       'HomeScreen':(context)=>const HomeScreen(),
+
        
       },
+      
     );
   }
 }

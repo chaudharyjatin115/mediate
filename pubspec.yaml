@@ -29,6 +29,7 @@ environment:
 dependencies:
   bloc: ^8.0.2
   cupertino_icons: ^1.0.2
+  floating_bottom_navigation_bar: ^1.5.2
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1

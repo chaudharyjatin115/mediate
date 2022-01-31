@@ -11,6 +11,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -52,6 +53,13 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
             const FavouritesContainer(),
+            Container(
+              height: 400,
+            ),
+            Container(
+              height: 400,
+            ),
+            
           ],
         ),
       ),
