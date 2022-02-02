@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
 
@@ -60,7 +62,8 @@ class PlayListScreen extends StatelessWidget {
                         height: 10,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Container(
                             decoration: BoxDecoration(
@@ -134,21 +137,27 @@ class PlayListScreen extends StatelessWidget {
                                   ],
                                 ),
                               ),
+                            const SizedBox(width: 50),
                               Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     '${audios[index].name}',
                                     style: const TextStyle(
-                                        color: Colors.white, fontSize: 20.0),
+                                      color: Colors.white, fontSize: 15.0),
                                   ),
-                                  Text('${audios[index].category}')
+                                Text(
+                                  '${audios[index].category}',
+                                  style: const TextStyle(color: Colors.white),
+                                )
                                 ],
                               ),
+                            Text('${audios[index].length}')
                             ],
                           ),
                         );
-                      }),
+                    },
+                  ),
                 )
               ],
             ),
