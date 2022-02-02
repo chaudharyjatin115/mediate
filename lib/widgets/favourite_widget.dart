@@ -28,6 +28,7 @@ class FavouritesContainer extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
+                    
                     children: [
                       Padding(
                         padding: const EdgeInsets.fromLTRB(12.0, 10, 12.0, 10),
@@ -35,16 +36,17 @@ class FavouritesContainer extends StatelessWidget {
                           height: 110,
                           width: 100,
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(13.0),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: AssetImage(
-                                      '${audios[index].coverImage}'))),
+                            borderRadius: BorderRadius.circular(13.0),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage('${audios[index].coverImage}'),
+                            ),
+                          ),
                         ),
                       ),
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const Text(
                             'Train your Mind',
