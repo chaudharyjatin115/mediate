@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mediate/widgets/already_account_widget.dart';
 import 'package:mediate/widgets/custom_input_field.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
-import 'package:mediate/widgets/third_party_signIn_button.dart';
-import 'package:mediate/widgets/welcome_text_Login.dart';
+import 'package:mediate/widgets/third_party_signin_button.dart';
+import 'package:mediate/widgets/welcome_text_login.dart';
 
 class Loginscreen extends StatelessWidget {
   const Loginscreen({Key? key}) : super(key: key);

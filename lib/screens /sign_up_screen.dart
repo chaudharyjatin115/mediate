@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mediate/widgets/already_account_widget.dart';
 import 'package:mediate/widgets/custom_input_field.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
-import 'package:mediate/widgets/third_party_signIn_button.dart';
+import 'package:mediate/widgets/third_party_signin_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({Key? key}) : super(key: key);

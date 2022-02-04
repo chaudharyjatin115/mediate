@@ -1,6 +1,5 @@
 
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
 
@@ -155,7 +154,10 @@ class PlayListScreen extends StatelessWidget {
                             
                             Padding(
                               padding: const EdgeInsets.only(left:115.0),
-                              child: Text('00:${audios[index].length}:00',style: TextStyle(color: Colors.white),),
+                              child: Text(
+                                '00:${audios[index].length}:00',
+                                style: const TextStyle(color: Colors.white),
+                              ),
                             )
                             ],
                           ),
