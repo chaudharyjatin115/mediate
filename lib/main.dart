@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'package:mediate/screens%20/home_screen.dart';
 import 'package:mediate/screens%20/login_screen.dart';
 import 'package:mediate/screens%20/on_boarding_screen.dart';
