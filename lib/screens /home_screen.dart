@@ -15,17 +15,18 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
       bottomNavigationBar: BottomAppBar(
+        color: const Color(0xff05164a),
         child: Row(
           children: [
-            IconButton(icon: Icon(Icons.menu), onPressed: () {}),
-            Spacer(),
-            IconButton(icon: Icon(Icons.search), onPressed: () {}),
-            IconButton(icon: Icon(Icons.more_vert), onPressed: () {}),
+            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
+            const Spacer(),
+            IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
           ],
         ),
       ),
       floatingActionButton:
-          FloatingActionButton(child: Icon(Icons.add), onPressed: () {}),
+          FloatingActionButton(
+          child: const Icon(Icons.pause), onPressed: () {}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       
     
