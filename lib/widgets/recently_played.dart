@@ -8,7 +8,7 @@ class RecentlyPlayed extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 200,
-      width: 400,
+      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,

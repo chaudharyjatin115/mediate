@@ -10,7 +10,7 @@ class FavouritesContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 150,
-      width: 410,
+      width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         itemCount: audios.length,
         scrollDirection: Axis.horizontal,

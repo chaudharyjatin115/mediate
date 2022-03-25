@@ -15,8 +15,8 @@ class SignUpScreen extends StatelessWidget {
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         title: const Text('Sign up'),
       ),
-      body: SingleChildScrollView(
-        child: Center(
+      body: Center(
+        child: SingleChildScrollView(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -60,8 +60,7 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    const InputTextField(
-                        title: 'Enter your Name', isTrue: false),
+                    InputTextField(title: 'Enter your Name', isTrue: false),
                     const SizedBox(
                       height: 20.0,
                     ),
