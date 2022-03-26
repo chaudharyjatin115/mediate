@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "45285783198",
+    "project_id": "mediate-369d9",
+    "storage_bucket": "mediate-369d9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45285783198:android:c7c08f785d408b8e9c2d8f",
+        "android_client_info": {
+          "package_name": "com.chaudharyjatin115.mediate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45285783198-stfv0va3uf4edsqj08128r6i5772gh1t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chaudharyjatin115.mediate",
+            "certificate_hash": "bc46aca67ddb9604a8ae53d847018d772733b5a0"
+          }
+        },
+        {
+          "client_id": "45285783198-9fjqidn9a1l7scaa3tbmb0eiqhmog0ed.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfvYvO0D5MUCqeuq0BxwN-RMPqfamYGUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45285783198-9fjqidn9a1l7scaa3tbmb0eiqhmog0ed.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
