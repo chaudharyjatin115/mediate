@@ -18,7 +18,6 @@ void main() async {
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -40,11 +39,11 @@ class MyApp extends StatelessWidget {
         initialRoute: 'OnBoardScreen',
         // ignore: prefer_const_constructors
         routes: {
-          'OnBoardScreen': (contex) => OnBoardingScreen(),
+          'OnBoardScreen': (context) => const OnBoardingScreen(),
           'LoginScreen': (context) => const Loginscreen(),
           'SignUpScreen': (context) => const SignUpScreen(),
           'HomeScreen': (context) => const HomeScreen(),
-          'PlayListScreen': (contex) => const PlayListScreen(),
+          'PlayListScreen': (context) => const PlayListScreen(),
         },
       ),
     );

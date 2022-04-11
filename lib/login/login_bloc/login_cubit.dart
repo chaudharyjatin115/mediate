@@ -1,12 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
 import 'login_auth_state.dart';
 
 class EmailAuthCubit extends Cubit<AuthState> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  
 
   EmailAuthCubit() : super(AuthInitialState()) {
     User? user = _firebaseAuth.currentUser;
@@ -16,9 +15,11 @@ class EmailAuthCubit extends Cubit<AuthState> {
       emit(AuthLoggedOutState());
     }
   }
+  // ignore: non_constant_identifier_names
   void SignInWithMail() async {
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+      
       getGoogleUser(googleUser);
       emit(AuthLoadingState());
     } on FirebaseAuthException catch (error) {
