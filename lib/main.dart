@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/login/login_bloc/login_cubit.dart';
-import 'package:mediate/screens%20/home_screen.dart';
-import 'package:mediate/screens%20/on_boarding_screen.dart';
-import 'package:mediate/screens%20/playlist_screen.dart';
-import 'package:mediate/screens%20/sign_up_screen.dart';
 
 import 'login/login_screen.dart';
+import 'screens /home_screen.dart';
+import 'screens /on_boarding_screen.dart';
+import 'screens /playlist_screen.dart';
+import 'screens /sign_up_screen.dart';
 
 
 void main() async {

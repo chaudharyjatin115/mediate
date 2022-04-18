@@ -27,7 +27,6 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  bloc: ^8.0.1
   email_validator: ^2.0.1
   equatable: ^2.0.3
   firebase_auth: ^3.3.11
