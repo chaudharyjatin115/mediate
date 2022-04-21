@@ -6,20 +6,20 @@ abstract class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class signInRequested extends AuthEvent {
+class SignInRequested extends AuthEvent {
   final String email;
   final String pass;
 
-  signInRequested(this.email, this.pass);
+  SignInRequested(this.email, this.pass);
 }
 
-class signUpRequested extends AuthEvent {
+class SignUpRequested extends AuthEvent {
   final String email;
   final String pass;
 
-  signUpRequested(this.email, this.pass);
+  SignUpRequested(this.email, this.pass);
 }
 
 class GoogleSignInRequested extends AuthEvent {}
 
-class signOutRequested extends AuthEvent {}
+class SignOutRequested extends AuthEvent {}

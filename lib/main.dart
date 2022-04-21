@@ -5,12 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'data/repositories/auth_repository.dart';
 import 'login/login_bloc/auth_bloc.dart';
-import 'login/login_bloc/login_auth_state.dart';
-import 'login/login_screen.dart';
-import 'screens /home_screen.dart';
+
 import 'screens /on_boarding_screen.dart';
-import 'screens /playlist_screen.dart';
-import 'screens /sign_up_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,8 +38,8 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color(0xff05164a),
             primarySwatch: Colors.deepPurple,
           ),
-          home: BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {},
+          home: OnBoardingScreen(
+            key: key,
           ),
         ),
       ),

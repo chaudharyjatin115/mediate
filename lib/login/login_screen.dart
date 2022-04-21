@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/login/login_bloc/auth_bloc.dart';
 import 'package:mediate/login/login_bloc/login_auth_state.dart';
-import 'package:mediate/screens%20/home_screen.dart';
+
 
 import 'package:mediate/widgets/already_account_widget.dart';
 import 'package:mediate/widgets/custom_input_field.dart';
@@ -68,14 +68,14 @@ class Loginscreen extends StatelessWidget {
                           SnackBar(
                             backgroundColor: Colors.red,
                             content: Text(state.error.toString()),
-                            duration: Duration(milliseconds: 200),
+                            duration: const Duration(milliseconds: 200),
                           ),
                         );
                       }
                     },
                     builder: (context, state) {
                       if (state is AuthLoadingState) {
-                        return Center(
+                        return const Center(
                           child: CircularProgressIndicator(),
                         );
                       }
