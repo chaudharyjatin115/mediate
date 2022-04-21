@@ -11,12 +11,11 @@ class AuthInitialState extends AuthState {
 }
 
 class AuthLoggedInState extends AuthState {
-  final User firebaseUser;
-  AuthLoggedInState(this.firebaseUser);
+  
 
   @override
   // TODO: implement props
-  List<Object?> get props => [firebaseUser];
+  List<Object?> get props => [];
 }
 
 class AuthLoggedOutState extends AuthState {

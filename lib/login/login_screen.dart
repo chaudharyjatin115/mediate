@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/login/login_bloc/auth_bloc.dart';
 import 'package:mediate/login/login_bloc/login_auth_state.dart';
 import 'package:mediate/screens%20/home_screen.dart';
 
@@ -9,7 +10,7 @@ import 'package:mediate/widgets/custom_login_button.dart';
 import 'package:mediate/widgets/third_party_signin_button.dart';
 import 'package:mediate/widgets/welcome_text_login.dart';
 
-import 'login_bloc/login_cubit.dart';
+
 
 class Loginscreen extends StatelessWidget {
   const Loginscreen({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class Loginscreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  BlocConsumer<EmailAuthCubit, AuthState>(
+                  BlocConsumer<AuthBloc, AuthState>(
                     listener: (context, state) {
                       if (state is AuthLoggedInState) {
                         Navigator.popUntil(context, (route) => route.isFirst);
@@ -80,8 +81,9 @@ class Loginscreen extends StatelessWidget {
                       }
                       return ThirdPartySignInButton(
                         onTap: () {
-                          BlocProvider.of<EmailAuthCubit>(context)
-                              .SignInWithMail();
+                          BlocProvider.of<AuthBloc>(context)
+                              .authRepository
+                              .signInWithGoogle();
                         },
                         assetLink: 'assets/images/google-logo.png',
                       );
