@@ -2,10 +2,13 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/screens%20/home_screen.dart';
 
 import 'data/repositories/auth_repository.dart';
 import 'login/login_bloc/auth_bloc.dart';
 
+import 'login/login_bloc/login_auth_state.dart';
+import 'login/login_screen.dart';
 import 'screens /on_boarding_screen.dart';
 
 void main() async {
@@ -38,11 +41,41 @@ class MyApp extends StatelessWidget {
             scaffoldBackgroundColor: const Color(0xff05164a),
             primarySwatch: Colors.deepPurple,
           ),
-          home: OnBoardingScreen(
-            key: key,
+          home: BlocBuilder<AuthBloc, AuthState>(
+            builder: (context, state) {
+              if (state is AuthLoggedInState) {
+                return HomeScreen(key: key);
+              } else if (state is AuthLoggedOutState) {
+                return Loginscreen();
+              } else if (state is AuthErrorState) {
+                return Scaffold(
+                  body: Column(
+                    children: [],
+                  ),
+                );
+              } else {
+                return OnBoardingScreen();
+              }
+            },
           ),
         ),
       ),
+    );
+  }
+}
+class BlocNavigate extends StatelessWidget {
+  const BlocNavigate({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) {
+        if (state is AuthLoggedInState) {
+          return const HomeScreen();
+        } else {
+          return const OnBoardingScreen();
+        }
+      },
     );
   }
 }

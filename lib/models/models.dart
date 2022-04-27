@@ -6,3 +6,7 @@ class AudioCategory {
 
   AudioCategory(this.coverImage, this.name, this.length, this.category);
 }
+
+class User {
+  String? name;
+}

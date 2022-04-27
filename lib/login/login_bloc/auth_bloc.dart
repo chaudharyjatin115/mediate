@@ -10,7 +10,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
   AuthBloc({required this.authRepository}) : super(AuthLoggedOutState()) {
     // When User Presses the SignIn Button, we will send the SignInRequested Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
-    on<signInRequested>((event, emit) async {
+    on<SignInRequested>((event, emit) async {
       emit(AuthLoadingState());
       try {
         await authRepository.signIn(email: event.email, password: event.pass);
@@ -21,7 +21,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
     // When User Presses the SignUp Button, we will send the SignUpRequest Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
-    on<signUpRequested>((event, emit) async {
+    on<SignUpRequested>((event, emit) async {
       emit(AuthLoadingState());
       try {
         await authRepository.signUp(email: event.email, password: event.pass);
@@ -43,7 +43,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
     // When User Presses the SignOut Button, we will send the SignOutRequested Event to the AuthBloc to handle it and emit the UnAuthenticated State
-    on<signOutRequested>((event, emit) async {
+    on<SignOutRequested>((event, emit) async {
       emit(AuthLoadingState());
       await authRepository.signOut();
       emit(AuthLoggedOutState());

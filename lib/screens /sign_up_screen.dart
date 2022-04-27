@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/login/login_bloc/auth_bloc.dart';
 import 'package:mediate/widgets/already_account_widget.dart';
 import 'package:mediate/widgets/custom_input_field.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
 import 'package:mediate/widgets/third_party_signin_button.dart';
 
+import '../login/login_bloc/auth_event.dart';
+
 class SignUpScreen extends StatelessWidget {
-  const SignUpScreen({Key? key}) : super(key: key);
+  final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _nameController = TextEditingController();
+  SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +68,11 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 20.0,
                     ),
-                    InputTextField(title: 'Enter your Name', isTrue: false),
+                    InputTextField(
+                      title: 'Enter your Name',
+                      isTrue: false,
+                      controller: _nameController,
+                    ),
                     const SizedBox(
                       height: 20.0,
                     ),
@@ -74,8 +86,11 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    const InputTextField(
-                        title: 'Enter Your email', isTrue: false),
+                    InputTextField(
+                      title: 'Enter Your email',
+                      isTrue: false,
+                      controller: _emailController,
+                    ),
                     const SizedBox(
                       height: 15.0,
                     ),
@@ -89,8 +104,11 @@ class SignUpScreen extends StatelessWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    const InputTextField(
-                        title: 'Pick a Strong Password', isTrue: true),
+                    InputTextField(
+                      title: 'Pick a Strong Password',
+                      isTrue: true,
+                      controller: _passwordController,
+                    ),
                     const SizedBox(
                       height: 30.0,
                     ),
