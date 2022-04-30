@@ -12,48 +12,43 @@ import 'package:mediate/widgets/welcome_text_login.dart';
 
 import 'login_bloc/auth_event.dart';
 
-class Loginscreen extends StatefulWidget {
+class Loginscreen extends StatelessWidget {
   Loginscreen({Key? key}) : super(key: key);
 
-  @override
-  State<Loginscreen> createState() => _LoginscreenState();
-}
-
-class _LoginscreenState extends State<Loginscreen> {
   final _formKey = GlobalKey<FormState>();
 
   final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<AuthBloc, AuthState>(
-        listener: (context, state) {
-          if (state is AuthLoggedInState) {
-            Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const HomeScreen(),
+        body: BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthLoggedInState) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomeScreen(),
+            ),
+          );
+        }
+        if (state is AuthErrorState) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(
+                state.error.toString(),
               ),
-            );
-          }
-          if (state is AuthErrorState) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  state.error.toString(),
-                ),
-              ),
-            );
-          }
-        },
+            ),
+          );
+        }
+      },
+      child: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           if (state is AuthLoadingState) {
-            return const Center(
-              child: CircularProgressIndicator(),
+            return Scaffold(
+              body: Center(child: CircularProgressIndicator()),
             );
           } else if (state is AuthLoggedOutState) {
             return SafeArea(
@@ -80,10 +75,34 @@ class _LoginscreenState extends State<Loginscreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    CustomLoginButton(
-                      buttonColor: Colors.black12,
-                      title: 'Sign in',
-                      onTap: () {},
+                    BlocConsumer<AuthBloc, AuthState>(
+                      listener: (context, state) {
+                        if (state is AuthLoggedInState) {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) => HomeScreen()),
+                            ),
+                          );
+                        } else if (state is AuthErrorState) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              backgroundColor: Colors.red,
+                              content: Text(state.error.toString()),
+                              duration: const Duration(milliseconds: 200),
+                            ),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        return CustomLoginButton(
+                          buttonColor: Colors.black12,
+                          title: 'Sign in',
+                          onTap: () {
+                            _createAccountWithEmailAndPassword(context);
+                          },
+                        );
+                      },
                     ),
                     const SizedBox(height: 50),
                     const Text(
@@ -97,36 +116,36 @@ class _LoginscreenState extends State<Loginscreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         BlocConsumer<AuthBloc, AuthState>(
-                          listener: (context, state) {
-                            if (state is AuthLoggedInState) {
-                              Navigator.popUntil(
-                                  context, (route) => route.isFirst);
-                              Navigator.pushReplacementNamed(
-                                  context, 'HomeScreen');
-                            } else if (state is AuthErrorState) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  backgroundColor: Colors.red,
-                                  content: Text(state.error.toString()),
-                                  duration: const Duration(milliseconds: 200),
-                                ),
-                              );
-                            }
-                          },
-                          builder: (context, state) {
-                            if (state is AuthLoadingState) {
-                              return const Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                            return ThirdPartySignInButton(
-                              onTap: () async {
-                                _authenticateWithGoogle(context);
-                              },
-                              assetLink: 'assets/images/google-logo.png',
+                            listener: (context, state) {
+                          if (state is AuthLoggedInState) {
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: ((context) => HomeScreen()),
+                              ),
                             );
-                          },
-                        ),
+                          } else if (state is AuthErrorState) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                backgroundColor: Colors.red,
+                                content: Text(state.error.toString()),
+                                duration: const Duration(milliseconds: 200),
+                              ),
+                            );
+                          }
+                        }, builder: (context, state) {
+                          if (state is AuthLoadingState) {
+                            return const Center(
+                              child: CircularProgressIndicator(),
+                            );
+                          }
+                          return ThirdPartySignInButton(
+                            onTap: () async {
+                              _authenticateWithGoogle(context);
+                            },
+                            assetLink: 'assets/images/google-logo.png',
+                          );
+                        }),
                         ThirdPartySignInButton(
                             onTap: () {},
                             assetLink: 'assets/images/facebook-logo.png'),
@@ -147,11 +166,11 @@ class _LoginscreenState extends State<Loginscreen> {
               ),
             );
           } else {
-            return HomeScreen();
+            return Loginscreen();
           }
         },
       ),
-    );
+    ));
   }
 
   void _createAccountWithEmailAndPassword(BuildContext context) {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mediate/login/login_screen.dart';
 import 'package:mediate/widgets/custom_login_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
@@ -58,7 +59,8 @@ class OnBoardingScreen extends StatelessWidget {
                   title: 'Log in',
                   buttonColor: Colors.black12,
                   onTap: () {
-                    Navigator.pushNamed(context, 'LoginScreen');
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Loginscreen()));
                   },
                 )
               ],

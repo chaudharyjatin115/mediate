@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -31,51 +32,27 @@ class MyApp extends StatelessWidget {
         create: (context) => AuthBloc(
             authRepository: RepositoryProvider.of<AuthRepository>(context)),
         child: MaterialApp(
-          theme: ThemeData(
-            // navigationBarTheme
-            //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
-            fontFamily: 'Poppins',
-            textTheme:
-                const TextTheme(headline1: TextStyle(color: Colors.white)),
+            theme: ThemeData(
+              // navigationBarTheme
+              //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
+              fontFamily: 'Poppins',
+              textTheme:
+                  const TextTheme(headline1: TextStyle(color: Colors.white)),
 
-            scaffoldBackgroundColor: const Color(0xff05164a),
-            primarySwatch: Colors.deepPurple,
-          ),
-          home: BlocBuilder<AuthBloc, AuthState>(
-            builder: (context, state) {
-              if (state is AuthLoggedInState) {
-                return HomeScreen(key: key);
-              } else if (state is AuthLoggedOutState) {
-                return Loginscreen();
-              } else if (state is AuthErrorState) {
-                return Scaffold(
-                  body: Column(
-                    children: [],
-                  ),
-                );
-              } else {
-                return OnBoardingScreen();
-              }
-            },
-          ),
-        ),
+              scaffoldBackgroundColor: const Color(0xff05164a),
+              primarySwatch: Colors.deepPurple,
+            ),
+            home: StreamBuilder<User?>(
+              stream: FirebaseAuth.instance.authStateChanges(),
+              builder: (context, snapshot) {
+                if (snapshot.hasData) {
+                  return HomeScreen();
+                } else {
+                  return OnBoardingScreen();
+                }
+              },
+            )),
       ),
-    );
-  }
-}
-class BlocNavigate extends StatelessWidget {
-  const BlocNavigate({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<AuthBloc, AuthState>(
-      builder: (context, state) {
-        if (state is AuthLoggedInState) {
-          return const HomeScreen();
-        } else {
-          return const OnBoardingScreen();
-        }
-      },
     );
   }
 }
