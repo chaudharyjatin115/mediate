@@ -138,13 +138,14 @@ class Loginscreen extends StatelessWidget {
                             return const Center(
                               child: CircularProgressIndicator(),
                             );
+                          } else {
+                            return ThirdPartySignInButton(
+                              onTap: () async {
+                                _authenticateWithGoogle(context);
+                              },
+                              assetLink: 'assets/images/google-logo.png',
+                            );
                           }
-                          return ThirdPartySignInButton(
-                            onTap: () async {
-                              _authenticateWithGoogle(context);
-                            },
-                            assetLink: 'assets/images/google-logo.png',
-                          );
                         }),
                         ThirdPartySignInButton(
                             onTap: () {},
