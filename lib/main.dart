@@ -8,8 +8,7 @@ import 'package:mediate/screens%20/home_screen.dart';
 import 'data/repositories/auth_repository.dart';
 import 'login/login_bloc/auth_bloc.dart';
 
-import 'login/login_bloc/login_auth_state.dart';
-import 'login/login_screen.dart';
+
 import 'screens /on_boarding_screen.dart';
 
 void main() async {

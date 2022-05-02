@@ -24,36 +24,37 @@ class Loginscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: BlocListener<AuthBloc, AuthState>(
-      listener: (context, state) {
-        if (state is AuthLoggedInState) {
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
-            ),
-          );
-        }
-        if (state is AuthErrorState) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                state.error.toString(),
+      body: BlocListener<AuthBloc, AuthState>(
+        listener: (context, state) {
+          if (state is AuthLoggedInState) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const HomeScreen(),
               ),
-            ),
-          );
-        }
-      },
-      child: BlocBuilder<AuthBloc, AuthState>(
-        builder: (context, state) {
-          if (state is AuthLoadingState) {
-            return Scaffold(
-              body: Center(child: CircularProgressIndicator()),
             );
-          } else if (state is AuthLoggedOutState) {
-            return SafeArea(
-              child: SingleChildScrollView(
-                child: Column(
+          }
+          if (state is AuthErrorState) {
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  state.error.toString(),
+                ),
+              ),
+            );
+          }
+        },
+        child: BlocBuilder<AuthBloc, AuthState>(
+          builder: (context, state) {
+            if (state is AuthLoadingState) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            if (state is AuthLoggedOutState) {
+              return ListView(
+                children: [
+                  Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -75,36 +76,14 @@ class Loginscreen extends StatelessWidget {
                     const SizedBox(
                       height: 20,
                     ),
-                    BlocConsumer<AuthBloc, AuthState>(
-                      listener: (context, state) {
-                        if (state is AuthLoggedInState) {
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) => HomeScreen()),
-                            ),
-                          );
-                        } else if (state is AuthErrorState) {
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              backgroundColor: Colors.red,
-                              content: Text(state.error.toString()),
-                              duration: const Duration(milliseconds: 200),
-                            ),
-                          );
-                        }
-                      },
-                      builder: (context, state) {
-                        return CustomLoginButton(
-                          buttonColor: Colors.black12,
-                          title: 'Sign in',
-                          onTap: () {
-                            _createAccountWithEmailAndPassword(context);
-                          },
-                        );
-                      },
+                      CustomLoginButton(
+                        buttonColor: Colors.black12,
+                        title: 'Sign in',
+                        onTap: () {
+                          _createAccountWithEmailAndPassword(context);
+                        },
                     ),
-                    const SizedBox(height: 50),
+                      const SizedBox(height: 40),
                     const Text(
                       'or continue with',
                       style: TextStyle(color: Colors.white, fontSize: 12),
@@ -115,38 +94,12 @@ class Loginscreen extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        BlocConsumer<AuthBloc, AuthState>(
-                            listener: (context, state) {
-                          if (state is AuthLoggedInState) {
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: ((context) => HomeScreen()),
-                              ),
-                            );
-                          } else if (state is AuthErrorState) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                backgroundColor: Colors.red,
-                                content: Text(state.error.toString()),
-                                duration: const Duration(milliseconds: 200),
-                              ),
-                            );
-                          }
-                        }, builder: (context, state) {
-                          if (state is AuthLoadingState) {
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          } else {
-                            return ThirdPartySignInButton(
-                              onTap: () async {
-                                _authenticateWithGoogle(context);
-                              },
-                              assetLink: 'assets/images/google-logo.png',
-                            );
-                          }
-                        }),
+                          ThirdPartySignInButton(
+                            onTap: () async {
+                              _authenticateWithGoogle(context);
+                            },
+                            assetLink: 'assets/images/google-logo.png',
+                          ),
                         ThirdPartySignInButton(
                             onTap: () {},
                             assetLink: 'assets/images/facebook-logo.png'),
@@ -163,15 +116,20 @@ class Loginscreen extends StatelessWidget {
                       },
                     ),
                   ],
+                  ),
+                ],
+              );
+            } else {
+              return Scaffold(
+                body: Center(
+                  child: CircularProgressIndicator(),
                 ),
-              ),
-            );
-          } else {
-            return Loginscreen();
-          }
-        },
+              );
+            }
+          },
+        ),
       ),
-    ));
+    );
   }
 
   void _createAccountWithEmailAndPassword(BuildContext context) {
@@ -191,8 +149,3 @@ class Loginscreen extends StatelessWidget {
     );
   }
 }
-
-
-// ignore: must_be_immutable
-
-
