@@ -62,24 +62,20 @@ class FavouritesContainer extends StatelessWidget {
                             ),
                             Row(
                               children: [
-                                Positioned(
-                                  bottom: 20,
-                                  left: 13,
-                                  child: Container(
-                                    height: 20,
-                                    width: 80,
-                                    child: Center(
-                                        child: Text(
-                                      '${audios[index].name}',
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      ),
-                                    )),
-                                    decoration: BoxDecoration(
-                                        color: Colors.black12.withOpacity(0.6),
-                                        borderRadius:
-                                            BorderRadius.circular(10.0)),
-                                  ),
+                                Container(
+                                  height: 20,
+                                  width: 80,
+                                  child: Center(
+                                      child: Text(
+                                    '${audios[index].name}',
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  )),
+                                  decoration: BoxDecoration(
+                                      color: Colors.black12.withOpacity(0.6),
+                                      borderRadius:
+                                          BorderRadius.circular(10.0)),
                                 ),
                                 const SizedBox(
                                   width: 12.0,

@@ -1,15 +1,15 @@
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/screens%20/home_screen.dart';
+import 'package:mediate/data/repositories/auth_repository.dart';
+import 'package:mediate/screens%20/on_boarding_screen.dart';
 
-import 'data/repositories/auth_repository.dart';
 import 'login/login_bloc/auth_bloc.dart';
-
-
-import 'screens /on_boarding_screen.dart';
+import 'screens /home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

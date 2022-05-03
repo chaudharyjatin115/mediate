@@ -30,8 +30,10 @@ class HomeScreen extends StatelessWidget {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       
     
-      body: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      body: ListView(
+        children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const ImageHeader(),
             const MoodBar(),
@@ -79,7 +81,8 @@ class HomeScreen extends StatelessWidget {
             ),
             
           ],
-        ),
+          ),
+        ],
       ),
     );
   }
