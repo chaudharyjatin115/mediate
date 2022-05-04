@@ -55,67 +55,67 @@ class Loginscreen extends StatelessWidget {
               return ListView(
                 children: [
                   Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const WelcomeText(),
-                    const SizedBox(height: 50),
-                    InputTextField(
-                      title: 'Enter Email',
-                      isTrue: false,
-                      controller: _emailController,
-                    ),
-                    const SizedBox(
-                      height: 20.0,
-                    ),
-                    InputTextField(
-                      title: 'EnterPassword',
-                      isTrue: true,
-                      controller: _passwordController,
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const WelcomeText(),
+                      const SizedBox(height: 50),
+                      InputTextField(
+                        title: 'Enter Email',
+                        isTrue: false,
+                        controller: _emailController,
+                      ),
+                      const SizedBox(
+                        height: 20.0,
+                      ),
+                      InputTextField(
+                        title: 'EnterPassword',
+                        isTrue: true,
+                        controller: _passwordController,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
                       CustomLoginButton(
                         buttonColor: Colors.black12,
                         title: 'Sign in',
                         onTap: () {
                           _createAccountWithEmailAndPassword(context);
                         },
-                    ),
+                      ),
                       const SizedBox(height: 40),
-                    const Text(
-                      'or continue with',
-                      style: TextStyle(color: Colors.white, fontSize: 12),
-                    ),
-                    const SizedBox(
-                      height: 60.0,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
+                      const Text(
+                        'or continue with',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                      const SizedBox(
+                        height: 60.0,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
                           ThirdPartySignInButton(
                             onTap: () async {
                               _authenticateWithGoogle(context);
                             },
                             assetLink: 'assets/images/google-logo.png',
                           ),
-                        ThirdPartySignInButton(
-                            onTap: () {},
-                            assetLink: 'assets/images/facebook-logo.png'),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    AlreadyAccountWidget(
-                      primaryText: 'Not a member ? ',
-                      secondaryText: 'Register Now',
-                      onTap: () {
-                        Navigator.pushNamed(context, 'SignUpScreen');
-                      },
-                    ),
-                  ],
+                          ThirdPartySignInButton(
+                              onTap: () {},
+                              assetLink: 'assets/images/facebook-logo.png'),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      AlreadyAccountWidget(
+                        primaryText: 'Not a member ? ',
+                        secondaryText: 'Register Now',
+                        onTap: () {
+                          Navigator.pushNamed(context, 'SignUpScreen');
+                        },
+                      ),
+                    ],
                   ),
                 ],
               );
