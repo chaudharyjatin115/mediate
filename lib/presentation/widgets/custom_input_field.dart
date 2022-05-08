@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 class InputTextField extends StatelessWidget {
   final String? title;
   final bool? isTrue;
-  
 
+// a custom login input field
   final TextEditingController? controller;
-  InputTextField(
-      {Key? key,
-      required this.title,
-      required this.isTrue,
+  InputTextField({
+    Key? key,
+    required this.title,
+    required this.isTrue,
     required this.controller,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +21,6 @@ class InputTextField extends StatelessWidget {
         width: 380.0,
         color: Colors.black12,
         child: TextField(
-         
           style: const TextStyle(color: Colors.grey),
           obscureText: isTrue!,
           textAlign: TextAlign.start,

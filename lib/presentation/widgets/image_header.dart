@@ -1,7 +1,5 @@
-
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
 
 class ImageHeader extends StatelessWidget {
   const ImageHeader({
@@ -10,6 +8,7 @@ class ImageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser!.displayName;
     return Stack(
       children: [
         Container(
@@ -62,9 +61,9 @@ class ImageHeader extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              const Text(
-                'Jatin',
-                style: TextStyle(
+              Text(
+                '$user',
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold),

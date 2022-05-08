@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:mediate/widgets/already_account_widget.dart';
-import 'package:mediate/widgets/custom_input_field.dart';
-import 'package:mediate/widgets/custom_login_button.dart';
-import 'package:mediate/widgets/third_party_signin_button.dart';
-
-
+import 'package:mediate/presentation/widgets/already_account_widget.dart';
+import 'package:mediate/presentation/widgets/custom_input_field.dart';
+import 'package:mediate/presentation/widgets/custom_login_button.dart';
+import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
 
 class SignUpScreen extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -68,7 +65,6 @@ class SignUpScreen extends StatelessWidget {
                       height: 20.0,
                     ),
                     InputTextField(
-                     
                       title: 'Enter your Name',
                       isTrue: false,
                       controller: _nameController,
@@ -87,7 +83,6 @@ class SignUpScreen extends StatelessWidget {
                       height: 10.0,
                     ),
                     InputTextField(
-                  
                       title: 'Enter Your email',
                       isTrue: false,
                       controller: _emailController,
@@ -106,7 +101,6 @@ class SignUpScreen extends StatelessWidget {
                       height: 10.0,
                     ),
                     InputTextField(
-                     
                       title: 'Pick a Strong Password',
                       isTrue: true,
                       controller: _passwordController,

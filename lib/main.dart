@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/repositories/auth_repository.dart';
-import 'package:mediate/screens%20/on_boarding_screen.dart';
+import 'package:mediate/presentation/onboarding_screen/on_boarding_screen.dart';
 
 import 'login/login_bloc/auth_bloc.dart';
-import 'screens /home_screen.dart';
+import 'presentation/home/home_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

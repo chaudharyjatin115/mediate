@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/login/login_screen.dart';
-import 'package:mediate/widgets/custom_login_button.dart';
+import 'package:mediate/presentation/login_signUp/login_screen.dart';
+import 'package:mediate/presentation/widgets/custom_login_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);

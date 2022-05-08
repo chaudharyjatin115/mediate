@@ -1,20 +1,24 @@
 import 'package:bloc/bloc.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mediate/data/repositories/auth_repository.dart';
 import 'package:mediate/login/login_bloc/login_auth_state.dart';
-
 
 import 'auth_event.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final AuthRepository authRepository;
+  final user = FirebaseAuth.instance.currentUser;
   AuthBloc({required this.authRepository}) : super(AuthLoggedOutState()) {
     // When User Presses the SignIn Button, we will send the SignInRequested Event to the AuthBloc to handle it and emit the Authenticated State if the user is authenticated
     on<SignInRequested>((event, emit) async {
       emit(AuthLoadingState());
       try {
         await authRepository.signIn(email: event.email, password: event.pass);
-        emit(AuthLoggedInState());
+        if (user != null) {
+          emit(AuthLoggedInState());
+        } else {
+          emit(AuthLoggedOutState());
+        }
       } catch (e) {
         emit(AuthErrorState(e.toString()));
         emit(AuthLoggedOutState());
@@ -25,6 +29,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(AuthLoadingState());
       try {
         await authRepository.signUp(email: event.email, password: event.pass);
+
         emit(AuthLoggedInState());
       } catch (e) {
         emit(AuthErrorState(e.toString()));

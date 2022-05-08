@@ -1,16 +1,18 @@
+import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/login/login_bloc/auth_bloc.dart';
 import 'package:mediate/login/login_bloc/login_auth_state.dart';
-import 'package:mediate/screens%20/home_screen.dart';
+import 'package:mediate/presentation/home/home_screen.dart';
+import 'package:mediate/presentation/widgets/already_account_widget.dart';
+import 'package:mediate/presentation/widgets/custom_input_field.dart';
+import 'package:mediate/presentation/widgets/custom_login_button.dart';
+import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
+import 'package:mediate/presentation/widgets/welcome_text_login.dart';
 
-import 'package:mediate/widgets/already_account_widget.dart';
-import 'package:mediate/widgets/custom_input_field.dart';
-import 'package:mediate/widgets/custom_login_button.dart';
-import 'package:mediate/widgets/third_party_signin_button.dart';
-import 'package:mediate/widgets/welcome_text_login.dart';
-
-import 'login_bloc/auth_event.dart';
+import '../../login/login_bloc/auth_event.dart';
 
 class Loginscreen extends StatelessWidget {
   Loginscreen({Key? key}) : super(key: key);
@@ -20,13 +22,14 @@ class Loginscreen extends StatelessWidget {
   final _emailController = TextEditingController();
 
   final _passwordController = TextEditingController();
+  final user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
-          if (state is AuthLoggedInState) {
+          if (state is AuthLoggedInState && user != null) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -80,7 +83,7 @@ class Loginscreen extends StatelessWidget {
                         buttonColor: Colors.black12,
                         title: 'Sign in',
                         onTap: () {
-                          _createAccountWithEmailAndPassword(context);
+                          _authenticateWithEmailAndPassword(context);
                         },
                       ),
                       const SizedBox(height: 40),
@@ -120,7 +123,7 @@ class Loginscreen extends StatelessWidget {
                 ],
               );
             } else {
-              return Scaffold(
+              return const Scaffold(
                 body: Center(
                   child: CircularProgressIndicator(),
                 ),
@@ -132,15 +135,10 @@ class Loginscreen extends StatelessWidget {
     );
   }
 
-  void _createAccountWithEmailAndPassword(BuildContext context) {
-    if (_formKey.currentState!.validate()) {
-      BlocProvider.of<AuthBloc>(context).add(
-        SignUpRequested(
-          _emailController.text,
-          _passwordController.text,
-        ),
-      );
-    }
+  void _authenticateWithEmailAndPassword(context) {
+    BlocProvider.of<AuthBloc>(context).add(
+      SignUpRequested(_emailController.text, _passwordController.text),
+    );
   }
 
   void _authenticateWithGoogle(context) {
