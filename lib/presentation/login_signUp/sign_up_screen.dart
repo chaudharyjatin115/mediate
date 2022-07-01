@@ -5,7 +5,7 @@ import 'package:mediate/presentation/widgets/custom_login_button.dart';
 import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
 
 class SignUpScreen extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
+ 
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _nameController = TextEditingController();

@@ -6,7 +6,7 @@ class InputTextField extends StatelessWidget {
 
 // a custom login input field
   final TextEditingController? controller;
-  InputTextField({
+  const InputTextField({
     Key? key,
     required this.title,
     required this.isTrue,

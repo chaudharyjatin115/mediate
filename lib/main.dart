@@ -1,15 +1,9 @@
 
-
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/data/repositories/auth_repository.dart';
-import 'package:mediate/presentation/onboarding_screen/on_boarding_screen.dart';
 
-import 'login/login_bloc/auth_bloc.dart';
-import 'presentation/home/home_screen.dart';
+import 'presentation/login_signUp/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,33 +19,16 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return RepositoryProvider(
-      create: (context) => AuthRepository(),
-      child: BlocProvider(
-        create: (context) => AuthBloc(
-            authRepository: RepositoryProvider.of<AuthRepository>(context)),
-        child: MaterialApp(
-            theme: ThemeData(
-              // navigationBarTheme
-              //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
-              fontFamily: 'Poppins',
-              textTheme:
-                  const TextTheme(headline1: TextStyle(color: Colors.white)),
+    return MaterialApp(
+        theme: ThemeData(
+          // navigationBarTheme
+          //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
+          fontFamily: 'Poppins',
+          textTheme: const TextTheme(headline1: TextStyle(color: Colors.white)),
 
-              scaffoldBackgroundColor: const Color(0xff05164a),
-              primarySwatch: Colors.deepPurple,
-            ),
-            home: StreamBuilder<User?>(
-              stream: FirebaseAuth.instance.authStateChanges(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return const HomeScreen();
-                } else {
-                  return const OnBoardingScreen();
-                }
-              },
-            )),
-      ),
-    );
+          scaffoldBackgroundColor: const Color(0xff05164a),
+          primarySwatch: Colors.deepPurple,
+        ),
+        home: Loginscreen());
   }
 }
