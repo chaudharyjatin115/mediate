@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mediate/presentation/widgets/already_account_widget.dart';
 import 'package:mediate/presentation/widgets/custom_input_field.dart';
 import 'package:mediate/presentation/widgets/custom_login_button.dart';
 import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
 
-class SignUpScreen extends StatelessWidget {
- 
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-  final _nameController = TextEditingController();
+class SignUpScreen extends HookWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final emailController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final name = useTextEditingController();
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -67,7 +67,7 @@ class SignUpScreen extends StatelessWidget {
                     InputTextField(
                       title: 'Enter your Name',
                       isTrue: false,
-                      controller: _nameController,
+                      controller: name,
                     ),
                     const SizedBox(
                       height: 20.0,
@@ -85,7 +85,7 @@ class SignUpScreen extends StatelessWidget {
                     InputTextField(
                       title: 'Enter Your email',
                       isTrue: false,
-                      controller: _emailController,
+                      controller: emailController,
                     ),
                     const SizedBox(
                       height: 15.0,
@@ -103,7 +103,7 @@ class SignUpScreen extends StatelessWidget {
                     InputTextField(
                       title: 'Pick a Strong Password',
                       isTrue: true,
-                      controller: _passwordController,
+                      controller: passwordController,
                     ),
                     const SizedBox(
                       height: 30.0,

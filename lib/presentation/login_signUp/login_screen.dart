@@ -1,6 +1,8 @@
-
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mediate/login/login_bloc/auth_bloc.dart';
+import 'package:mediate/login/login_bloc/auth_event.dart';
 
 import 'package:mediate/presentation/widgets/already_account_widget.dart';
 import 'package:mediate/presentation/widgets/custom_input_field.dart';
@@ -8,14 +10,15 @@ import 'package:mediate/presentation/widgets/custom_login_button.dart';
 import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
 import 'package:mediate/presentation/widgets/welcome_text_login.dart';
 
-
-class Loginscreen extends StatelessWidget {
-  Loginscreen({Key? key}) : super(key: key);
-final emailController=TextEditingController();
-final passwordController = TextEditingController();
+class LoginView extends HookWidget {
+  LoginView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final emailController = useTextEditingController(
+        // these text in usetextEditingController would only show up in text fields only if we are debugging the app
+        );
+    final passwordController = useTextEditingController();
     return Scaffold(
         body: ListView(
       children: [
@@ -28,7 +31,7 @@ final passwordController = TextEditingController();
             InputTextField(
               title: 'Enter Email',
               isTrue: false,
-            controller: emailController,
+              controller: emailController,
             ),
             const SizedBox(
               height: 20.0,
@@ -36,7 +39,7 @@ final passwordController = TextEditingController();
             InputTextField(
               title: 'EnterPassword',
               isTrue: true,
-              controller:passwordController,
+              controller: passwordController,
             ),
             const SizedBox(
               height: 20,
@@ -44,7 +47,13 @@ final passwordController = TextEditingController();
             CustomLoginButton(
               buttonColor: Colors.black12,
               title: 'Sign in',
-              onTap: () {},
+              onTap: () {
+                final email = emailController.text;
+                final password = passwordController.text;
+                context
+                    .read<AuthBloc>()
+                    .add(AuthEventEmailLogin(email: email, password: password));
+              },
             ),
             const SizedBox(height: 40),
             const Text(

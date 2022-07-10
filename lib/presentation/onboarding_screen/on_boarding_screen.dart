@@ -60,7 +60,7 @@ class OnBoardingScreen extends StatelessWidget {
                   buttonColor: Colors.black12,
                   onTap: () {
                     Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Loginscreen()));
+                        MaterialPageRoute(builder: (context) => LoginView()));
                   },
                 )
               ],
