@@ -1,25 +1,49 @@
 
-import 'package:equatable/equatable.dart';
 
-abstract class AuthEvent extends Equatable {
-  @override
-  List<Object> get props => [];
+import 'package:flutter/foundation.dart' show immutable;
+
+@immutable
+abstract class AuthEvent {
+  const AuthEvent();
 }
 
-class SignInRequested extends AuthEvent {
+@immutable
+class AuthEventEmailLogin implements AuthEvent {
   final String email;
-  final String pass;
+  final String password;
 
-  SignInRequested(this.email, this.pass);
+  const AuthEventEmailLogin({required this.email, required this.password});
 }
 
-class SignUpRequested extends AuthEvent {
+@immutable
+class AuthEventEmailRegister implements AuthEvent {
   final String email;
-  final String pass;
+  final String password;
 
-  SignUpRequested(this.email, this.pass);
+  const AuthEventEmailRegister({required this.email, required this.password});
 }
 
-class GoogleSignInRequested extends AuthEvent {}
+@immutable
+class AuthEventGoogleSignIn implements AuthEvent {}
 
-class SignOutRequested extends AuthEvent {}
+@immutable
+class AuthEventLogout implements AuthEvent {}
+
+@immutable
+class AuthEventGotoRegister implements AuthEvent {}
+
+@immutable
+class AuthEventGotoLogin implements AuthEvent {}
+
+@immutable
+class AuthEventInRegisterView implements AuthEvent {}
+
+class AuthEventInitialize implements AuthEvent {
+
+}
+
+class AuthEventDeleteAccount implements AuthEvent {}
+
+class AuthEventInLoginView implements AuthEvent {
+
+}
