@@ -2,8 +2,10 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/firebase_options.dart';
 import 'package:mediate/loading/loading_screen.dart';
 import 'package:mediate/login/login_bloc/auth_bloc.dart';
+import 'package:mediate/login/login_bloc/auth_event.dart';
 import 'package:mediate/login/login_bloc/login_auth_state.dart';
 import 'package:mediate/presentation/home/home_screen.dart';
 import 'package:mediate/presentation/login_signUp/sign_up_screen.dart';
@@ -13,9 +15,9 @@ import 'presentation/login_signUp/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
-  SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // SystemChrome.setPreferredOrientations(
+  //     [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 
@@ -25,7 +27,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return BlocProvider(
+        create: (context) => AuthBloc()..add(AuthEventInitialize()),
+        child: MaterialApp(
       theme: ThemeData(
         // navigationBarTheme
         //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),
@@ -61,6 +65,6 @@ class MyApp extends StatelessWidget {
           }
         },
       ),
-    );
+        ));
   }
 }
