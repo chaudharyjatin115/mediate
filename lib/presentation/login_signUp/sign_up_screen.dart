@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:mediate/login/login_bloc/auth_bloc.dart';
+import 'package:mediate/login/login_bloc/auth_event.dart';
 import 'package:mediate/presentation/widgets/already_account_widget.dart';
 import 'package:mediate/presentation/widgets/custom_input_field.dart';
 import 'package:mediate/presentation/widgets/custom_login_button.dart';
 import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
+import 'package:flutter/foundation.dart' show kDebugMode;
 
 class SignUpScreen extends HookWidget {
   SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final emailController = useTextEditingController();
-    final passwordController = useTextEditingController();
+    final emailController = useTextEditingController(
+        text: 'chaudharyjatin115@gmail.com'.ifDebugging);
+    final passwordController =
+        useTextEditingController(text: 'J-56789albdb'.ifDebugging);
     final name = useTextEditingController();
     return Scaffold(
       appBar: AppBar(
@@ -43,7 +49,10 @@ class SignUpScreen extends HookWidget {
                       onTap: () {},
                       assetLink: 'assets/images/facebook-logo.png'),
                   ThirdPartySignInButton(
-                      onTap: () {}, assetLink: 'assets/images/google-logo.png'),
+                      onTap: () {
+                        context.read<AuthBloc>().add(AuthEventGoogleSignIn());
+                      },
+                      assetLink: 'assets/images/google-logo.png'),
                 ],
               ),
               const SizedBox(
@@ -110,7 +119,10 @@ class SignUpScreen extends HookWidget {
                     ),
                     CustomLoginButton(
                         onTap: () {
-                          Navigator.pushNamed(context, 'HomeScreen');
+                          final email = emailController.text;
+                          final password = passwordController.text;
+                          context.read<AuthBloc>().add(AuthEventEmailRegister(
+                              email: email, password: password));
                         },
                         buttonColor: Colors.black12,
                         title: 'Sign up'),
@@ -121,7 +133,7 @@ class SignUpScreen extends HookWidget {
                       primaryText: 'already a member ?',
                       secondaryText: 'Log in',
                       onTap: () {
-                        Navigator.pushNamed(context, 'LoginScreen');
+                        context.read<AuthBloc>().add(AuthEventGotoLogin());
                       },
                     ),
                   ],
@@ -133,4 +145,9 @@ class SignUpScreen extends HookWidget {
       ),
     );
   }
+}
+
+extension IfDebugging on String {
+  // checking if app is in debug mode and return value
+  String? get ifDebugging => kDebugMode ? this : null;
 }
