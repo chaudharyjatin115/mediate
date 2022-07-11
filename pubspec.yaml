@@ -29,9 +29,8 @@ environment:
 dependencies:
   email_validator: ^2.0.1
   equatable: ^2.0.3
-  firebase_auth: ^3.3.11
-  firebase_core: ^1.13.1
-  firebase_storage: ^10.3.0
+  firebase_auth: ^3.4.1
+  firebase_core: ^1.19.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.0.1

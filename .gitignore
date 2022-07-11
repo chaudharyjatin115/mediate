@@ -44,4 +44,6 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-android/app/google-services.json
+android/app/src/debug/google-services.json
+/lib/firebase_options.dart
+/ios/firebase_app_id_file.json
