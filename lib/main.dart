@@ -3,18 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/firebase_options.dart';
-import 'package:mediate/loading/loading_screen.dart';
-import 'package:mediate/login/login_bloc/auth_bloc.dart';
-import 'package:mediate/login/login_bloc/auth_event.dart';
-import 'package:mediate/login/login_bloc/login_auth_state.dart';
-import 'package:mediate/presentation/home/home_screen.dart';
-import 'package:mediate/presentation/login_signUp/sign_up_screen.dart';
-import 'package:mediate/presentation/onboarding_screen/on_boarding_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mediate/screens/loading/loading_screen.dart';
+
+import 'package:mediate/screens/home/home_screen.dart';
+import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
+import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
+
 
 import 'dialogs/show_auth_error.dart';
 import 'extensions/shared_pref_extension.dart';
-import 'presentation/login_signUp/login_screen.dart';
+import 'screens/login_signUp/login_screen.dart';
+import 'services/auth_bloc/auth_bloc.dart';
+import 'services/auth_bloc/auth_event.dart';
+import 'services/auth_bloc/login_auth_state.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
