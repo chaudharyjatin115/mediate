@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:mediate/auth/auth_error.dart';
+import 'package:mediate/services/auth/auth_error.dart';
 
 @immutable
 abstract class AuthState {
@@ -42,6 +42,12 @@ class AuthStateIsInRegistrationView extends AuthState {
   @override
   String toString() =>
       'AppStateLoggedOut,isLoadin=$isLoading,authError=$authError';
+}
+
+@immutable
+class AuthStateIsFirstRun extends AuthState {
+  const AuthStateIsFirstRun({required bool isLoading})
+      : super(isLoading: isLoading);
 }
 
 // getting user from authState

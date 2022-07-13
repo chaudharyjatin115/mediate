@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/presentation/login_signUp/login_screen.dart';
-import 'package:mediate/presentation/widgets/custom_login_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:mediate/services/auth_bloc/auth_bloc.dart';
+import 'package:mediate/services/auth_bloc/auth_event.dart';
+import 'package:mediate/widgets/custom_login_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);
@@ -49,7 +52,7 @@ class OnBoardingScreen extends StatelessWidget {
                   title: 'Get Started',
                   buttonColor: Colors.black12,
                   onTap: () {
-                    Navigator.pushNamed(context, 'SignUpScreen');
+                    context.read<AuthBloc>().add(AuthEventInRegisterView());
                   },
                 ),
                 const SizedBox(
@@ -58,10 +61,7 @@ class OnBoardingScreen extends StatelessWidget {
                 CustomLoginButton(
                   title: 'Log in',
                   buttonColor: Colors.black12,
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => LoginView()));
-                  },
+                  onTap: () {},
                 )
               ],
             ),

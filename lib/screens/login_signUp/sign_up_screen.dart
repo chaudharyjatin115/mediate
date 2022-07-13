@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mediate/login/login_bloc/auth_bloc.dart';
-import 'package:mediate/login/login_bloc/auth_event.dart';
-import 'package:mediate/presentation/widgets/already_account_widget.dart';
-import 'package:mediate/presentation/widgets/custom_input_field.dart';
-import 'package:mediate/presentation/widgets/custom_login_button.dart';
-import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
-import 'package:flutter/foundation.dart' show kDebugMode;
+import 'package:mediate/extensions/if_debugging.dart';
+
+import 'package:mediate/services/auth_bloc/auth_bloc.dart';
+import 'package:mediate/services/auth_bloc/auth_event.dart';
+import 'package:mediate/widgets/already_account_widget.dart';
+import 'package:mediate/widgets/custom_input_field.dart';
+import 'package:mediate/widgets/custom_login_button.dart';
+import 'package:mediate/widgets/third_party_signin_button.dart';
 
 class SignUpScreen extends HookWidget {
-  SignUpScreen({Key? key}) : super(key: key);
+  const SignUpScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -145,9 +146,4 @@ class SignUpScreen extends HookWidget {
       ),
     );
   }
-}
-
-extension IfDebugging on String {
-  // checking if app is in debug mode and return value
-  String? get ifDebugging => kDebugMode ? this : null;
 }

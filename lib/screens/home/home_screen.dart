@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-
-import 'package:mediate/presentation/widgets/favourite_widget.dart';
-import 'package:mediate/presentation/widgets/image_header.dart';
-import 'package:mediate/presentation/widgets/mood_bar.dart';
-import 'package:mediate/presentation/widgets/recently_played.dart';
+import 'package:mediate/widgets/favourite_widget.dart';
+import 'package:mediate/widgets/image_header.dart';
+import 'package:mediate/widgets/mood_bar.dart';
+import 'package:mediate/widgets/recently_played.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,16 +10,6 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xff05164a),
-        child: Row(
-          children: [
-            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
-            const Spacer(),
-            IconButton(icon: const Icon(Icons.more_vert), onPressed: () {}),
-          ],
-        ),
-      ),
       floatingActionButton: FloatingActionButton(
           child: const Icon(Icons.pause), onPressed: () {}),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,

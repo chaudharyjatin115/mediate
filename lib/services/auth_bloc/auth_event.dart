@@ -47,3 +47,7 @@ class AuthEventDeleteAccount implements AuthEvent {}
 class AuthEventInLoginView implements AuthEvent {
 
 }
+@immutable
+class AuthEventInIntroView implements AuthEvent {}
+
+class AuthEventFirstRun implements AuthEvent {}

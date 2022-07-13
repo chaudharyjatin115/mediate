@@ -10,8 +10,11 @@ Map<String, AuthError> authErrorMapping = {
   'no-current-user': const AuthErrorNoCurrentUser(),
   // error code in string    //creating a instance of the said class
   'operation-not-allowed': const AuthErrorOperationNotAllowed(),
-  'email-already-in-user': const AuthErrorEmailAlreadyInUse(),
+  'email-already-in-use': const AuthErrorEmailAlreadyInUse(),
   'requires-recent-login': const AuthErrorRequiresRecentLogin(),
+  'network-request-failed': const AuthErrorNetworkRequestFailed(),
+  'too-many-requests': const AuthErrorTooManyRequests(),
+
 };
 
 @immutable
@@ -93,4 +96,20 @@ class AuthErrorEmailAlreadyInUse extends AuthError {
       : super(
             dialogTitle: 'Email already used by other user',
             dialogText: 'Please try other email');
+}
+
+@immutable
+class AuthErrorNetworkRequestFailed extends AuthError {
+  const AuthErrorNetworkRequestFailed()
+      : super(
+            dialogText: 'theres an issue with network',
+            dialogTitle: 'network error ');
+}
+
+@immutable
+class AuthErrorTooManyRequests extends AuthError {
+  const AuthErrorTooManyRequests()
+      : super(
+            dialogText: 'theres an issue with network',
+            dialogTitle: 'network error ');
 }

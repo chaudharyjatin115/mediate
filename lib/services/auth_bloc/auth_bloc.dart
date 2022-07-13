@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mediate/login/login_bloc/auth_event.dart';
-import 'package:mediate/login/login_bloc/login_auth_state.dart';
-
-import '../../auth/auth_error.dart';
+import 'package:mediate/services/auth/auth_error.dart';
+import 'package:mediate/services/auth_bloc/auth_event.dart';
+import 'package:mediate/services/auth_bloc/login_auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthStateLoggedOut(isLoading: false)) {
@@ -33,26 +33,33 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         }
       },
     );
-    on<AuthEventEmailLogin>((event, emit) async {
-      emit(
-        const AuthStateLoggedOut(isLoading: true),
-      );
-      try {
+
+    //handling  the login event
+    on<AuthEventEmailLogin>(
+      (event, emit) async {
+        // while we are on login screen the first state would be logout and coz we are loading so loading property would be true
+        emit(const AuthStateLoggedOut(isLoading: true));
         final email = event.email;
         final password = event.password;
-        final credential = await FirebaseAuth.instance
-            .signInWithEmailAndPassword(email: email, password: password);
-        final user = credential.user!;
-        emit(AuthStateLoggedIn(user: user, isLoading: false));
-      } on FirebaseAuthException catch (e) {
-        emit(
-          AuthStateLoggedOut(
-            isLoading: false,
-            authError: AuthError.from(e),
-          ),
-        );
-      }
-    });
+        try {
+          // logging in the user by getting the email and password from event and creating a credential
+
+          final credential = await FirebaseAuth.instance
+              .signInWithEmailAndPassword(email: email, password: password);
+// getting the user from user credential
+          final user = credential.user!;
+          // getting the user images
+
+          // emitting the app state logged in on successful login
+          emit(AuthStateLoggedIn(user: user, isLoading: false));
+          //
+        } on FirebaseAuthException catch (e) {
+          // emiting the logged out state on firebase exception
+          emit(AuthStateLoggedOut(
+              isLoading: false, authError: AuthError.from(e)));
+        }
+      },
+    );
     on<AuthEventGotoRegister>(
       (event, emit) => emit(
         const AuthStateIsInRegistrationView(isLoading: false),
@@ -67,16 +74,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEventInLoginView>((event, emit) {
       emit(const AuthStateLoggedOut(isLoading: false));
     });
-    on<AuthEventInitialize>(
-      (event, emit) async {
-        final user = FirebaseAuth.instance.currentUser;
-        if (user == null) {
-          emit(const AuthStateLoggedOut(isLoading: false));
-        } else {
-          emit(AuthStateLoggedIn(user: user, isLoading: false));
-        }
-      },
-    );
+
     on<AuthEventGoogleSignIn>(
       (event, emit) async {
         const AuthStateLoggedOut(isLoading: false);
@@ -120,6 +118,16 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       } on FirebaseAuthException catch (e) {
         emit(AuthStateLoggedIn(
             user: user, isLoading: false, authError: AuthError.from(e)));
+      }
+    });
+
+    on<AuthEventInitialize>((event, emit) async {
+      final user = FirebaseAuth.instance.currentUser;
+
+      if (user == null) {
+        emit(const AuthStateLoggedOut(isLoading: false));
+      } else {
+        emit(AuthStateLoggedIn(user: user, isLoading: false));
       }
     });
   }

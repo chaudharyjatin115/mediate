@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mediate/login/login_bloc/auth_bloc.dart';
-import 'package:mediate/login/login_bloc/auth_event.dart';
-import 'package:mediate/presentation/login_signUp/sign_up_screen.dart';
+import 'package:mediate/extensions/if_debugging.dart';
+import 'package:mediate/services/auth_bloc/auth_event.dart';
 
-import 'package:mediate/presentation/widgets/already_account_widget.dart';
-import 'package:mediate/presentation/widgets/custom_input_field.dart';
-import 'package:mediate/presentation/widgets/custom_login_button.dart';
-import 'package:mediate/presentation/widgets/third_party_signin_button.dart';
-import 'package:mediate/presentation/widgets/welcome_text_login.dart';
+import 'package:mediate/widgets/already_account_widget.dart';
+import 'package:mediate/widgets/custom_input_field.dart';
+import 'package:mediate/widgets/custom_login_button.dart';
+import 'package:mediate/widgets/third_party_signin_button.dart';
+import 'package:mediate/widgets/welcome_text_login.dart';
+
+import '../../services/auth_bloc/auth_bloc.dart';
 
 class LoginView extends HookWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class LoginView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController(
-        text: 'chaudharyjatin115@protonmail.com'.ifDebugging);
+        text: 'chaudharyjatin115@gmail.com'.ifDebugging);
     final passwordController =
         useTextEditingController(text: 'J-56789albdb'.ifDebugging);
     return Scaffold(
@@ -46,7 +47,7 @@ class LoginView extends HookWidget {
               ),
               CustomLoginButton(
                 buttonColor: Colors.black12,
-                title: 'Sign in',
+                title: 'Log in',
                 onTap: () {
                   final email = emailController.text;
                   final password = passwordController.text;
