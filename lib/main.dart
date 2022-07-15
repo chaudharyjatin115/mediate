@@ -4,19 +4,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/firebase_options.dart';
 import 'package:mediate/screens/loading/loading_screen.dart';
-
 import 'package:mediate/screens/home/home_screen.dart';
-import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
-import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
 
-
+import 'package:mediate/screens/player/player_screen.dart';
 import 'dialogs/show_auth_error.dart';
 import 'extensions/shared_pref_extension.dart';
 import 'screens/login_signUp/login_screen.dart';
 import 'services/auth_bloc/auth_bloc.dart';
 import 'services/auth_bloc/auth_event.dart';
 import 'services/auth_bloc/login_auth_state.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,7 +31,15 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  @mustCallSuper
+  void initState() {
+    super.initState();
+    myAppState();
+  }
+
   bool isLoggedIn = false;
+
 // checks if app if launched first time and then sets the boolean to true
   myAppState() {
     MySharedPreferences.instance
@@ -49,7 +53,8 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => AuthBloc()..add(AuthEventInitialize()),
+        create: (context) => AuthBloc()
+          ..add(isLoggedIn ? AuthEventInitialize() : AuthEventFirstRun()),
         child: MaterialApp(
             theme: ThemeData(
               // navigationBarTheme
@@ -63,17 +68,18 @@ class _MyAppState extends State<MyApp> {
             ),
             home: BlocConsumer<AuthBloc, AuthState>(
               builder: ((context, authState) {
-                if (authState is AuthStateLoggedIn) {
-                  return const HomeScreen();
-                } else if (authState is AuthStateLoggedOut) {
-                  return const LoginView();
-                } else if (authState is AuthStateIsInRegistrationView) {
-                  return const SignUpScreen();
-                } else if (authState is AuthStateIsFirstRun) {
-                  return const OnBoardingScreen();
-                } else {
-                  return Container();
-                }
+                return const PlayerScreen();
+                // if (authState is AuthStateLoggedIn) {
+                //   return const HomeScreen();
+                // } else if (authState is AuthStateLoggedOut) {
+                //   return const LoginView();
+                // } else if (authState is AuthStateIsInRegistrationView) {
+                //   return const SignUpScreen();
+                // } else if (authState is AuthStateIsFirstRun) {
+                //   return const OnBoardingScreen();
+                // } else {
+                //   return Container();
+                // }
               }),
               listener: (context, appState) {
                 if (appState.isLoading) {

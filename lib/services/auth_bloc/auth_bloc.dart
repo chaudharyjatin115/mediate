@@ -37,7 +37,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     //handling  the login event
     on<AuthEventEmailLogin>(
       (event, emit) async {
-        // while we are on login screen the first state would be logout and coz we are loading so loading property would be true
+        // while we are on login screen the first state would be logout and coz we are loading so loading property would be trueum
         emit(const AuthStateLoggedOut(isLoading: true));
         final email = event.email;
         final password = event.password;
@@ -130,5 +130,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthStateLoggedIn(user: user, isLoading: false));
       }
     });
+    on<AuthEventFirstRun>((event, emit) => AuthEventFirstRun());
   }
 }
