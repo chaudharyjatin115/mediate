@@ -18,10 +18,10 @@ class PlayerScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 100, left: 120, right: 120),
+              padding: const EdgeInsets.only(top: 100, left: 100, right: 100),
               child: SizedBox(
-                height: 240,
-                width: 280,
+                height: 220,
+                width: 500,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(5),
                   child: Image(
@@ -32,24 +32,45 @@ class PlayerScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 80,
+              height: 100,
             ),
             Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                IconButton(
+                    color: Colors.white,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.skip_previous,
+                      size: 50,
+                    )),
+                // const SizedBox(width: 40),
                 Padding(
-                  padding: const EdgeInsets.only(left: 60, right: 120),
-                  child: IconButton(
-                      color: Colors.white,
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.play_circle,
-                        size: 100,
-                      )),
-                )
+                  padding: const EdgeInsets.only(bottom: 30, right: 30),
+                  child: Center(
+                    child: IconButton(
+                        color: Colors.white,
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.play_circle_fill_outlined,
+                          size: 80,
+                        )),
+                  ),
+                ),
+                // const SizedBox(width: 50),
+                IconButton(
+                    color: Colors.white,
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.skip_next,
+                      size: 50,
+                    )
+                    ),
+
               ],
-            )
+            ),
+
           ]),
     );
   }
