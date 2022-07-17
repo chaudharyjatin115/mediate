@@ -23,7 +23,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               .createUserWithEmailAndPassword(email: email, password: password);
           emit(AuthStateLoggedIn(user: credential.user!, isLoading: false));
         } on FirebaseAuthException catch (e) {
-          print(e);
+       
           emit(
             AuthStateIsInRegistrationView(
               isLoading: false,
