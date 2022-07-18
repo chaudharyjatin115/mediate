@@ -32,7 +32,19 @@ class PlayerScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 100,
+              height: 60,
+            ),
+            Container(
+              width: 360,
+              child: const LinearProgressIndicator(
+                value: 20,
+              ),
+            ),
+            Row(
+              children: [],
+            ),
+            const SizedBox(
+              height: 30,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -65,12 +77,26 @@ class PlayerScreen extends StatelessWidget {
                     icon: const Icon(
                       Icons.skip_next,
                       size: 50,
-                    )
-                    ),
-
+                    )),
               ],
             ),
-
+            const SizedBox(
+              height: 50,
+            ),
+            
+            SizedBox(
+              width: 280,
+              child: Slider(
+                min: 1.0,
+                max: 100.0,
+                value: 100.0,
+                onChanged: (double value) {},
+              ),
+            ),
+            const Icon(
+              Icons.volume_up,
+              color: Colors.white,
+            )
           ]),
     );
   }
