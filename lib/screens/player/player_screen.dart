@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/widgets/player_controls.dart';
+import 'package:mediate/widgets/volume_slider.dart';
 
 class PlayerScreen extends StatelessWidget {
   const PlayerScreen({Key? key}) : super(key: key);
@@ -9,9 +11,16 @@ class PlayerScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xff05164a),
+        elevation: 0,
         centerTitle: true,
-        title: const Icon(Icons.thumbs_up_down),
+        title: IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.arrow_drop_down,
+          ),
+        ),
       ),
+      
       backgroundColor: const Color(0xff05164a),
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -34,70 +43,26 @@ class PlayerScreen extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-            Container(
+          Container(
               width: 360,
               child: const LinearProgressIndicator(
                 value: 20,
               ),
             ),
-            Row(
-              children: [],
-            ),
+           
             const SizedBox(
               height: 30,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                IconButton(
-                    color: Colors.white,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.skip_previous,
-                      size: 50,
-                    )),
-                // const SizedBox(width: 40),
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 30, right: 30),
-                  child: Center(
-                    child: IconButton(
-                        color: Colors.white,
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.play_circle_fill_outlined,
-                          size: 80,
-                        )),
-                  ),
-                ),
-                // const SizedBox(width: 50),
-                IconButton(
-                    color: Colors.white,
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.skip_next,
-                      size: 50,
-                    )),
-              ],
-            ),
-            const SizedBox(
-              height: 50,
-            ),
+          const PlayerControls(),
+          // add player here
+          const SizedBox(
+            height: 60,
+          ),
+          
+          const VolumeSlider()
             
-            SizedBox(
-              width: 280,
-              child: Slider(
-                min: 1.0,
-                max: 100.0,
-                value: 100.0,
-                onChanged: (double value) {},
-              ),
-            ),
-            const Icon(
-              Icons.volume_up,
-              color: Colors.white,
-            )
-          ]),
+        ],
+      ),
     );
   }
 }
