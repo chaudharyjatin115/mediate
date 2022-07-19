@@ -10,7 +10,7 @@ class MoodBar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Container(
-        height: 50.0,
+        height: 40.0,
         decoration: BoxDecoration(
             color: const Color(0xff1A2688),
             borderRadius: BorderRadius.circular(15.0)),

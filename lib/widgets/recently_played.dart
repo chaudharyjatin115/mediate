@@ -7,7 +7,7 @@ class RecentlyPlayed extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 190,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         shrinkWrap: true,
@@ -23,7 +23,7 @@ class RecentlyPlayed extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10.0, 7.0, 7.0, 0.0),
                       child: Container(
-                        height: 130,
+                        height: 110,
                         width: 170,
                         decoration: BoxDecoration(
                           borderRadius: const BorderRadius.only(
@@ -43,7 +43,7 @@ class RecentlyPlayed extends StatelessWidget {
       bottom: 20,
       left: 13,
       child: Container(
-        height: 20,
+                        height: 15,
         width: 80,
         child: Center(
             child: Text(
@@ -61,7 +61,7 @@ class RecentlyPlayed extends StatelessWidget {
                 ),
                 Container(
                   padding: const EdgeInsets.only(bottom: 2),
-                  height: 60,
+                  height: 50,
                   decoration: BoxDecoration(
                       border: Border.all(width: 0, color: Colors.black),
                       color: const Color(0xff283a75),

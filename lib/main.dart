@@ -23,38 +23,17 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  @override
-  @mustCallSuper
-  void initState() {
-    super.initState();
-    myAppState();
-  }
-
-  bool isLoggedIn = false;
-
-// checks if app if launched first time and then sets the boolean to true
-  myAppState() {
-    MySharedPreferences.instance
-        .getBooleanValue("isfirstRun")
-        .then((value) => setState(() {
-              isLoggedIn = value;
-            }));
-  }
+  
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => AuthBloc()
-          ..add(isLoggedIn ? AuthEventInitialize() : AuthEventFirstRun()),
+          ..add(AuthEventInitialize()),
         child: MaterialApp(
             theme: ThemeData(
               // navigationBarTheme
@@ -68,7 +47,7 @@ class _MyAppState extends State<MyApp> {
             ),
             home: BlocConsumer<AuthBloc, AuthState>(
               builder: ((context, authState) {
-                return const PlayerScreen();
+                return const HomeScreen();
                 // if (authState is AuthStateLoggedIn) {
                 //   return const HomeScreen();
                 // } else if (authState is AuthStateLoggedOut) {

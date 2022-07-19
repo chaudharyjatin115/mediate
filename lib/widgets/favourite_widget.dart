@@ -9,7 +9,7 @@ class FavouritesContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 150,
+      height: 145,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
         itemCount: audios.length,
@@ -25,7 +25,7 @@ class FavouritesContainer extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: const Color(0xff283a75),
                     borderRadius: BorderRadius.circular(20.0)),
-                height: 130,
+                height: 125,
                 width: 300,
                 child: Column(
                   children: [
@@ -37,7 +37,7 @@ class FavouritesContainer extends StatelessWidget {
                           padding:
                               const EdgeInsets.fromLTRB(12.0, 10, 12.0, 10),
                           child: Container(
-                            height: 110,
+                            height: 105,
                             width: 100,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(13.0),
@@ -58,12 +58,12 @@ class FavouritesContainer extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             ),
                             const SizedBox(
-                              height: 20.0,
+                              height: 17.0,
                             ),
                             Row(
                               children: [
                                 Container(
-                                  height: 20,
+                                  height: 18,
                                   width: 80,
                                   child: Center(
                                       child: Text(
@@ -78,7 +78,7 @@ class FavouritesContainer extends StatelessWidget {
                                           BorderRadius.circular(10.0)),
                                 ),
                                 const SizedBox(
-                                  width: 12.0,
+                                  width: 11.0,
                                 ),
                                 Text(
                                   '${audios[index].length} mins',

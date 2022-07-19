@@ -8,12 +8,12 @@ class ImageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser!.displayName;
+    // final user = FirebaseAuth.instance.currentUser!.displayName;
     return Stack(
       children: [
         Container(
             width: MediaQuery.of(context).size.width,
-            height: 220.0,
+            height: 200.0,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
@@ -61,9 +61,9 @@ class ImageHeader extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              Text(
-                '$user',
-                style: const TextStyle(
+              const Text(
+                'Jatin',
+                style: TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold),
