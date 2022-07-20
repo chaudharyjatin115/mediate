@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
 import 'package:mediate/widgets/favourite_widget.dart';
@@ -23,23 +25,40 @@ class HomeScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: 60,
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(7.0),
-                  child: Image(
-                    image: AssetImage(audio1.coverImage!),
-                    height: 40,
-                    width: 200,
+                const SizedBox(
+                  width: 6.0,
+                ),
+                Container(
+                  padding: const EdgeInsets.only(right: 20),
+                  height: 50,
+                  width: 45,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(7.0),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(audio3.coverImage!))
+
+                      // height: 40,
+                      // width: 200,
                   ),
                 ),
                 const SizedBox(
-                  width: 120,
+                  width: 35,
+                ),
+                Center(
+                    child: Text(
+                  audio2.name!,
+                  style: const TextStyle(fontSize: 15, color: Colors.white),
+                )),
+                SizedBox(
+                  width: MediaQuery.of(context).size.width - 203,
                 ),
                 IconButton(
                   padding: const EdgeInsets.only(
-                    bottom: 10,
+                    bottom: 10, right: 10
                   ),
                   icon: const Icon(
                     Icons.play_circle_fill,

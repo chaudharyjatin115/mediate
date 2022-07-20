@@ -8,7 +8,7 @@ import 'package:mediate/screens/home/home_screen.dart';
 
 import 'package:mediate/screens/player/player_screen.dart';
 import 'dialogs/show_auth_error.dart';
-import 'extensions/shared_pref_extension.dart';
+
 import 'screens/login_signUp/login_screen.dart';
 import 'services/auth_bloc/auth_bloc.dart';
 import 'services/auth_bloc/auth_event.dart';
