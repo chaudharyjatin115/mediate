@@ -20,7 +20,7 @@ class HomeScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             height: 60,
             decoration:
-                BoxDecoration(borderRadius: BorderRadius.circular(20.0)),
+                BoxDecoration(borderRadius: BorderRadius.circular(600.0)),
             child: ListTile(
               enabled: true,
               onTap: () {},
