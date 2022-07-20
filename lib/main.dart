@@ -6,10 +6,10 @@ import 'package:mediate/firebase_options.dart';
 import 'package:mediate/screens/loading/loading_screen.dart';
 import 'package:mediate/screens/home/home_screen.dart';
 
-import 'package:mediate/screens/player/player_screen.dart';
+
 import 'dialogs/show_auth_error.dart';
 
-import 'screens/login_signUp/login_screen.dart';
+
 import 'services/auth_bloc/auth_bloc.dart';
 import 'services/auth_bloc/auth_event.dart';
 import 'services/auth_bloc/login_auth_state.dart';
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
             ),
             home: BlocConsumer<AuthBloc, AuthState>(
               builder: ((context, authState) {
-                return const HomeScreen();
+                return HomeScreen();
                 // if (authState is AuthStateLoggedIn) {
                 //   return const HomeScreen();
                 // } else if (authState is AuthStateLoggedOut) {

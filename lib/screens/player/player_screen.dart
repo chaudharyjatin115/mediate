@@ -43,8 +43,8 @@ class PlayerScreen extends StatelessWidget {
             const SizedBox(
               height: 60,
             ),
-          Container(
-              width: 360,
+          SizedBox(
+            width: MediaQuery.of(context).size.width - 10,
               child: const LinearProgressIndicator(
                 value: 20,
               ),
