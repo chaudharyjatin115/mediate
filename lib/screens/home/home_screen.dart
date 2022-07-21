@@ -9,32 +9,36 @@ import 'package:mediate/widgets/mood_bar.dart';
 import 'package:mediate/widgets/recently_played.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Container(
+          padding: const EdgeInsets.all(3.0),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: Container(
             width: MediaQuery.of(context).size.width,
             height: 60,
-            decoration:
-                BoxDecoration(borderRadius: BorderRadius.circular(600.0)),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
+
+            
             child: ListTile(
               enabled: true,
               onTap: () {},
            
               tileColor: const Color(0xff283a75),
               leading: Container(
-                padding: const EdgeInsets.only(right: 20),
-                height: 50,
+                  padding: const EdgeInsets.only(right: 20, top: 10),
+                  height: 40,
                 width: 45,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7.0),
                   image: DecorationImage(
                     fit: BoxFit.cover,
-                    image: AssetImage(audio3.coverImage!),
+                      image: AssetImage(audio1.coverImage!),
                   ),
                 ),
               ),
@@ -52,6 +56,7 @@ class HomeScreen extends StatelessWidget {
                 color: Colors.white,
               ),
             ),
+          ),
           ),
         ),
         body: Column(
