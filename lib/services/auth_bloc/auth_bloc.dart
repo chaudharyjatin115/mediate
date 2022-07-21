@@ -123,14 +123,12 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthEventInitialize>((event, emit) async {
       final user = FirebaseAuth.instance.currentUser;
-      bool firstRun = await IsFirstRun.isFirstRun();
+      // bool firstRun = await IsFirstRun.isFirstRun();
 
-      if (user == null && firstRun == false) {
+      if (user == null) {
         emit(const AuthStateLoggedOut(isLoading: false));
-      } else if (firstRun = true) {
-        emit(const AuthStateIsFirstRun(isLoading: false));
       } else {
-        emit(AuthStateLoggedIn(user: user!, isLoading: false));
+        emit(AuthStateLoggedIn(user: user, isLoading: false));
       }
     });
     on<AuthEventFirstRun>((event, emit) => AuthEventFirstRun());
