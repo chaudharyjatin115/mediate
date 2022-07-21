@@ -5,10 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/firebase_options.dart';
 import 'package:mediate/screens/loading/loading_screen.dart';
 import 'package:mediate/screens/home/home_screen.dart';
-
+import 'package:mediate/screens/login_signUp/login_screen.dart';
+import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
+import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
 
 import 'dialogs/show_auth_error.dart';
-
 
 import 'services/auth_bloc/auth_bloc.dart';
 import 'services/auth_bloc/auth_event.dart';
@@ -26,14 +27,11 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => AuthBloc()
-          ..add(AuthEventInitialize()),
+        create: (context) => AuthBloc()..add(AuthEventInitialize()),
         child: MaterialApp(
             theme: ThemeData(
               // navigationBarTheme
@@ -47,18 +45,17 @@ class MyApp extends StatelessWidget {
             ),
             home: BlocConsumer<AuthBloc, AuthState>(
               builder: ((context, authState) {
-                return HomeScreen();
-                // if (authState is AuthStateLoggedIn) {
-                //   return const HomeScreen();
-                // } else if (authState is AuthStateLoggedOut) {
-                //   return const LoginView();
-                // } else if (authState is AuthStateIsInRegistrationView) {
-                //   return const SignUpScreen();
-                // } else if (authState is AuthStateIsFirstRun) {
-                //   return const OnBoardingScreen();
-                // } else {
-                //   return Container();
-                // }
+                if (authState is AuthStateLoggedIn) {
+                  return const HomeScreen();
+                } else if (authState is AuthStateLoggedOut) {
+                  return const LoginView();
+                } else if (authState is AuthStateIsInRegistrationView) {
+                  return const SignUpScreen();
+                } else if (authState is AuthStateIsFirstRun) {
+                  return const OnBoardingScreen();
+                } else {
+                  return Container();
+                }
               }),
               listener: (context, appState) {
                 if (appState.isLoading) {

@@ -61,7 +61,9 @@ class OnBoardingScreen extends StatelessWidget {
                 CustomLoginButton(
                   title: 'Log in',
                   buttonColor: Colors.black12,
-                  onTap: () {},
+                  onTap: () {
+                    context.read<AuthBloc>().add(AuthEventInLoginView());
+                  },
                 )
               ],
             ),

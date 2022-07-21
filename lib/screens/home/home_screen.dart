@@ -42,10 +42,10 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              title: Text(
-                audio1.name!,
-                style: const TextStyle(color: Colors.white),
-              ),
+                title: Text(
+                  audio1.name!,
+                  style: const TextStyle(color: Colors.white),
+                ),
               trailing: IconButton(
                 padding: const EdgeInsets.only(bottom: 10, right: 10),
                 icon: const Icon(
