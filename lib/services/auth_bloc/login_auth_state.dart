@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/foundation/key.dart';
 import 'package:mediate/services/auth/auth_error.dart';
 
 @immutable
@@ -61,3 +63,4 @@ extension GetUser on AuthState {
     }
   }
 }
+

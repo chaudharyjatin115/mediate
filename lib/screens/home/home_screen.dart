@@ -1,7 +1,10 @@
-import 'dart:ui';
+
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/widgets/favourite_widget.dart';
 import 'package:mediate/widgets/image_header.dart';
 import 'package:mediate/widgets/mood_bar.dart';
@@ -25,7 +28,9 @@ class HomeScreen extends StatelessWidget {
                   BoxDecoration(borderRadius: BorderRadius.circular(10.0)),
 
             
-            child: ListTile(
+              child: ListTile(
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 4, horizontal: 16),
               enabled: true,
               onTap: () {},
            
@@ -50,9 +55,12 @@ class HomeScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(bottom: 10, right: 10),
                 icon: const Icon(
                   Icons.play_circle_fill,
-                  size: 50,
+                    size: 40,
                 ),
-                onPressed: () {},
+                  onPressed: () {
+                    context.read<AudioPlayerBloc>().add(AudioPlayEventRemote(
+                        audioUrl: audio1.audioUrl!, ));
+                  },
                 color: Colors.white,
               ),
             ),

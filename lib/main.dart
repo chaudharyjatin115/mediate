@@ -8,6 +8,9 @@ import 'package:mediate/screens/home/home_screen.dart';
 import 'package:mediate/screens/login_signUp/login_screen.dart';
 import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
 import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
 
 import 'dialogs/show_auth_error.dart';
 
@@ -30,8 +33,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-        create: (context) => AuthBloc()..add(AuthEventInitialize()),
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider(
+              create: (context) => AuthBloc()..add(AuthEventInitialize())),
+          BlocProvider(
+              create: (context) =>
+                  AudioPlayerBloc()..add(AudioPlayerInitialEvent()))
+        ],
         child: MaterialApp(
             theme: ThemeData(
               // navigationBarTheme
