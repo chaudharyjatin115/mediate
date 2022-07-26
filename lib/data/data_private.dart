@@ -6,7 +6,7 @@ final audio1 =
     'Calm',
     50,
     'Audio',
-    'http://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3');
+    'https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3');
 final audio2 =
     AudioCategory(
     'assets/images/cover/flower_cover.jpg',

@@ -31,7 +31,7 @@ class HomeScreen extends StatelessWidget {
               child: Expanded(
                 child: ListTile(
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 4, horizontal: 16),
+                      const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
                   enabled: true,
                   onTap: () {},
                   tileColor: const Color(0xff283a75),
