@@ -6,16 +6,18 @@ import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
 
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
-  AudioPlayerBloc() : super(AudioPlayState()) {
+  AudioPlayerBloc()
+      : super(AudioPlayState(audioPause: false, audioPlay: false)) {
     on<AudioPlayEventRemote>((event, emit) async {
-      emit(AudioLoadingState());
+      emit(AudioLoadingState(audioPause: true, audioPlay: false));
       final audioPlayer = AudioPlayer();
       try {
         audioPlayer.setUrl(event.audioUrl);
         audioPlayer.play();
-        emit(AudioPlayState());
+        emit(AudioPlayState(audioPlay: true, audioPause: false));
       } catch (e) {
-        emit(AudioPlayerErrorState(error: e.toString()));
+        emit(AudioPlayerErrorState(
+            error: e.toString(), audioPause: false, audioPlay: false));
       }
     });
     on<AudioPlayerInitialEvent>((event, emit) async {});

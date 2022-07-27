@@ -10,7 +10,7 @@ import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
 import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
+
 
 import 'dialogs/show_auth_error.dart';
 
