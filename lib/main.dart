@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/data/data_private.dart';
 import 'package:mediate/firebase_options.dart';
 import 'package:mediate/screens/loading/loading_screen.dart';
 import 'package:mediate/screens/home/home_screen.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
               create: (context) => AuthBloc()..add(AuthEventInitialize())),
           BlocProvider(
               create: (context) =>
-                  AudioPlayerBloc()..add(AudioPlayerInitialEvent()))
+                  AudioPlayerBloc()
+                ..add(AudioPlayerInitialEvent(audio: audio1)))
         ],
         child: MaterialApp(
             theme: ThemeData(

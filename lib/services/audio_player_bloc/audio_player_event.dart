@@ -1,22 +1,26 @@
 import 'package:flutter/foundation.dart' show immutable;
+import 'package:mediate/models/models.dart';
 
 @immutable
 abstract class AudioPlayerEvent {}
 
 @immutable
 class AudioPlayEventRemote implements AudioPlayerEvent {
-  final String audioUrl;
+  final AudioCategory audio;
 
   const AudioPlayEventRemote({
-    required this.audioUrl,
+    required this.audio,
   });
 }
 
 @immutable
 class AudioEventStop implements AudioPlayerEvent {
-  final String audioUrl;
 
-  const AudioEventStop(this.audioUrl);
+  const AudioEventStop();
 }
 
-class AudioPlayerInitialEvent implements AudioPlayerEvent {}
+class AudioPlayerInitialEvent implements AudioPlayerEvent {
+  final AudioCategory audio;
+
+  AudioPlayerInitialEvent({required this.audio});
+}

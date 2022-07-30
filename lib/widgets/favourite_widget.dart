@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 
 class FavouritesContainer extends StatelessWidget {
   const FavouritesContainer({
@@ -18,9 +21,11 @@ class FavouritesContainer extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, 'PlayListScreen');
-              },
+              onTap: (() {
+                context
+                    .read<AudioPlayerBloc>()
+                    .add(AudioPlayEventRemote(audio: audios[index]));
+              }),
               child: Container(
                 decoration: BoxDecoration(
                     color: const Color(0xff283a75),
@@ -100,5 +105,3 @@ class FavouritesContainer extends StatelessWidget {
     );
   }
 }
-
-

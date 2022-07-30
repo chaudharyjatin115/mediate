@@ -1,25 +1,47 @@
 import 'package:just_audio/just_audio.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/data/data_private.dart';
 
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
 
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
+  final audioPlayer = AudioPlayer();
   AudioPlayerBloc()
-      : super(AudioPlayState(audioPause: false, audioPlay: false)) {
+      : super(AudioPlayerInitialState(
+          audioPause: false,
+          audioPlay: false,
+        )) {
     on<AudioPlayEventRemote>((event, emit) async {
       emit(AudioLoadingState(audioPause: true, audioPlay: false));
-      final audioPlayer = AudioPlayer();
+
       try {
-        audioPlayer.setUrl(event.audioUrl);
+        audioPlayer.setUrl(event.audio.audioUrl!);
         audioPlayer.play();
-        emit(AudioPlayState(audioPlay: true, audioPause: false));
+        emit(AudioPlayState(
+            audioPlay: true, audioPause: false, audio: event.audio));
       } catch (e) {
         emit(AudioPlayerErrorState(
-            error: e.toString(), audioPause: false, audioPlay: false));
+            error: e.toString(),
+            audioPause: false,
+            audioPlay: false,
+            audio: audio1));
       }
     });
-    on<AudioPlayerInitialEvent>((event, emit) async {});
+    on<AudioPlayerInitialEvent>((event, emit) async {
+      emit(AudioLoadingState(
+          audioPlay: false, audioPause: true, audio: event.audio));
+    });
+    on<AudioEventStop>((event, emit) async {
+      audioPlayer.pause();
+
+      emit(AudioPauseState(
+        audioPause: true,
+        audioPlay: false,
+      ));
+    });
   }
 }
+
+
