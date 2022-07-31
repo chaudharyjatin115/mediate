@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 import 'package:mediate/data/data_private.dart';
-import 'package:mediate/data/data_private.dart';
+
 import 'package:mediate/models/models.dart';
 
 @immutable
@@ -12,32 +12,36 @@ abstract class AudioPlayerState {
   const AudioPlayerState({
     required this.audioPlay,
     required this.audioPause,
-    this.audio,
+    required this.audio,
   });
 }
 
 @immutable
 class AudioPlayState extends AudioPlayerState {
-  AudioPlayState(
-      {required bool audioPlay, required bool audioPause, AudioCategory? audio})
+  const AudioPlayState(
+      {required bool audioPlay,
+      required bool audioPause,
+      required AudioCategory audio})
       : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
 }
 
 class AudioPauseState extends AudioPlayerState {
-  AudioPauseState(
-      {required bool audioPlay, required bool audioPause, AudioCategory? audio})
+  const AudioPauseState(
+      {required bool audioPlay,
+      required bool audioPause,
+      required AudioCategory audio})
       : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
 }
 
 @immutable
 class AudioLoadingState extends AudioPlayerState {
-  AudioLoadingState(
+  const AudioLoadingState(
       {required bool audioPlay, required bool audioPause, AudioCategory? audio})
       : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
 }
 
 class AudioPlayerInitialState extends AudioPlayerState {
-  AudioPlayerInitialState(
+  const AudioPlayerInitialState(
       {required bool audioPlay, required bool audioPause, AudioCategory? audio})
       : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
 }
@@ -45,7 +49,7 @@ class AudioPlayerInitialState extends AudioPlayerState {
 class AudioPlayerErrorState extends AudioPlayerState {
   final String error;
 
-  AudioPlayerErrorState(
+  const AudioPlayerErrorState(
       {required this.error,
       required bool audioPlay,
       required bool audioPause,
@@ -53,11 +57,7 @@ class AudioPlayerErrorState extends AudioPlayerState {
       : super(audioPause: audioPause, audioPlay: audioPlay, audio: audio);
 }
 
-class AudioIsNotPlayingState extends AudioPlayState {
-  AudioIsNotPlayingState(
-      {required bool audioPlay, required bool audioPause, AudioCategory? audio})
-      : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
-}
+
 
 extension GetAudio on AudioPlayerState {
   AudioCategory? get audio {
@@ -65,7 +65,7 @@ extension GetAudio on AudioPlayerState {
     if (AudioPlayState is AudioPlayState) {
       return cls.audio;
     } else {
-      return audio1;
+      return null;
     }
   }
 }

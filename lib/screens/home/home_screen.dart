@@ -30,9 +30,72 @@ class HomeScreen extends StatelessWidget {
               child: BlocBuilder<AudioPlayerBloc, AudioPlayerState>(
                 builder: (context, state) {
                   if (state is AudioPlayState) {
-                    return BottomPlayer(
-                      audio: state.audio!,
+                    return ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 16),
+                      enabled: true,
+                      onTap: () {},
+                      tileColor: const Color(0xff283a75),
+                      leading: Container(
+                        padding: const EdgeInsets.only(right: 20, top: 10),
+                        height: 40,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(state.audio!.coverImage!)),
+                        ),
+                      ),
+                      title: Text(
+                        audio1.name!,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(Icons.pause_circle_filled),
+                        onPressed: () {
+                          context
+                              .read<AudioPlayerBloc>()
+                              .add(AudioEventStop(audio: state.audio!));
+                        },
+                        color: Colors.white,
+                      ),
                     );
+                  } else if (state is AudioPauseState) {
+                    return ListTile(
+                      contentPadding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 16),
+                      enabled: true,
+                      onTap: () {},
+                      tileColor: const Color(0xff283a75),
+                      leading: Container(
+                        padding: const EdgeInsets.only(right: 20, top: 10),
+                        height: 40,
+                        width: 45,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(7.0),
+                          image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(state.audio!.coverImage!)),
+                        ),
+                      ),
+                      title: Text(
+                        audio1.name!,
+                        style: const TextStyle(color: Colors.white),
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.play_circle_filled),
+                        onPressed: () {
+                          context
+                              .read<AudioPlayerBloc>()
+                              .add(AudioPlayEventRemote(audio: state.audio!));
+                        },
+                        color: Colors.white,
+                      ),
+                    );
+                  } else if (state is AudioLoadingState) {
+                    return Container(
+                        height: 20, child: CircularProgressIndicator());
                   } else {
                     return Container();
                   }
@@ -85,57 +148,5 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ]));
-  }
-}
-
-class BottomPlayer extends StatelessWidget {
-  final AudioCategory audio;
-  BottomPlayer({Key? key, required this.audio}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return ListTile(
-      contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 16),
-      enabled: true,
-      onTap: () {},
-      tileColor: const Color(0xff283a75),
-      leading: Container(
-        padding: const EdgeInsets.only(right: 20, top: 10),
-        height: 40,
-        width: 45,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(7.0),
-          image: DecorationImage(
-              fit: BoxFit.cover, image: AssetImage(audio.coverImage!)),
-        ),
-      ),
-      title: Text(
-        audio1.name!,
-        style: const TextStyle(color: Colors.white),
-      ),
-      trailing: BlocBuilder<AudioPlayerBloc, AudioPlayerState>(
-        builder: (context, state) {
-          if (state is AudioPlayState) {
-            return IconButton(
-              icon: const Icon(Icons.play_circle_fill),
-              onPressed: () {
-                context.read<AudioPlayerBloc>().add(AudioPlayEventRemote(
-                      audio: audio,
-                    ));
-              },
-              color: Colors.white,
-            );
-          } else {
-            return IconButton(
-              icon: const Icon(Icons.pause_circle_filled),
-              onPressed: () {
-                context.read<AudioPlayerBloc>().add(const AudioEventStop());
-              },
-              color: Colors.white,
-            );
-          }
-        },
-      ),
-    );
   }
 }

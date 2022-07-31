@@ -15,8 +15,8 @@ class AudioPlayEventRemote implements AudioPlayerEvent {
 
 @immutable
 class AudioEventStop implements AudioPlayerEvent {
-
-  const AudioEventStop();
+  final AudioCategory audio;
+  const AudioEventStop({required this.audio});
 }
 
 class AudioPlayerInitialEvent implements AudioPlayerEvent {
