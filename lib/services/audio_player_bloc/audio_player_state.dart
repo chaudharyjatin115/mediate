@@ -56,6 +56,14 @@ class AudioPlayerErrorState extends AudioPlayerState {
       AudioCategory? audio})
       : super(audioPause: audioPause, audioPlay: audioPlay, audio: audio);
 }
+class AudioPlayerIsInPlayerScreen extends AudioPlayerState {
+  AudioPlayerIsInPlayerScreen(
+      {required bool audioPlay,
+      required bool? audioPause,
+      required AudioCategory? audio})
+      : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
+} 
+ 
 
 
 

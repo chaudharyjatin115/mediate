@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 
 class RecentlyPlayed extends StatelessWidget {
   const RecentlyPlayed({Key? key}) : super(key: key);
@@ -15,7 +18,11 @@ class RecentlyPlayed extends StatelessWidget {
         itemCount: audios.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
-            onTap: () {},
+            onTap: () {
+              context
+                  .read<AudioPlayerBloc>()
+                  .add(AudioPlayEventRemote(audio: audios[index]));
+            },
             child: Column(
               children: [
                 Stack(
@@ -40,23 +47,23 @@ class RecentlyPlayed extends StatelessWidget {
                       ),
                     ),
                     Positioned(
-      bottom: 20,
-      left: 13,
-      child: Container(
+                      bottom: 20,
+                      left: 13,
+                      child: Container(
                         height: 15,
-        width: 80,
-        child: Center(
-            child: Text(
-          '${audios[index].name}',
-          style: const TextStyle(
-            color: Colors.white,
-          ),
-        )),
-        decoration: BoxDecoration(
-            color: Colors.black12.withOpacity(0.6),
-            borderRadius: BorderRadius.circular(10.0)),
-      ),
-    )
+                        width: 80,
+                        child: Center(
+                            child: Text(
+                          '${audios[index].name}',
+                          style: const TextStyle(
+                            color: Colors.white,
+                          ),
+                        )),
+                        decoration: BoxDecoration(
+                            color: Colors.black12.withOpacity(0.6),
+                            borderRadius: BorderRadius.circular(10.0)),
+                      ),
+                    )
                   ],
                 ),
                 Container(
@@ -102,5 +109,3 @@ class RecentlyPlayed extends StatelessWidget {
     );
   }
 }
-
-

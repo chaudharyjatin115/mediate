@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/models/models.dart';
 import 'package:mediate/widgets/player_controls.dart';
 import 'package:mediate/widgets/volume_slider.dart';
 
 class PlayerScreen extends StatelessWidget {
-  const PlayerScreen({Key? key}) : super(key: key);
+  final AudioCategory audio;
+  const PlayerScreen({Key? key, required this.audio}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,53 +16,53 @@ class PlayerScreen extends StatelessWidget {
         elevation: 0,
         centerTitle: true,
         title: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: const Icon(
             Icons.arrow_drop_down,
           ),
         ),
       ),
-      
       backgroundColor: const Color(0xff05164a),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 100, left: 100, right: 100),
-              child: SizedBox(
-                height: 220,
-                width: 500,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(5),
-                  child: Image(
-                    fit: BoxFit.cover,
-                    image: AssetImage(audio1.coverImage!),
-                  ),
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 100, left: 100, right: 100),
+            child: SizedBox(
+              height: 220,
+              width: 500,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(5),
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: AssetImage(audio.coverImage!),
                 ),
               ),
             ),
-            const SizedBox(
-              height: 60,
-            ),
+          ),
+          const SizedBox(
+            height: 60,
+          ),
           SizedBox(
             width: MediaQuery.of(context).size.width - 10,
-              child: const LinearProgressIndicator(
-                value: 20,
-              ),
+            child: const LinearProgressIndicator(
+              value: 20,
             ),
-           
-            const SizedBox(
-              height: 30,
-            ),
+          ),
+
+          const SizedBox(
+            height: 30,
+          ),
           const PlayerControls(),
           // add player here
           const SizedBox(
             height: 60,
           ),
-          
+
           const VolumeSlider()
-            
         ],
       ),
     );

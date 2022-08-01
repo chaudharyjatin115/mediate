@@ -24,3 +24,4 @@ class AudioPlayerInitialEvent implements AudioPlayerEvent {
 
   AudioPlayerInitialEvent({required this.audio});
 }
+

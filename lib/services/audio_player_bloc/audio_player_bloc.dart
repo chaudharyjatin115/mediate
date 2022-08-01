@@ -25,10 +25,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
             audio: audio1));
       }
     });
-    on<AudioPlayerInitialEvent>((event, emit) async {
-      emit(AudioLoadingState(
-          audioPlay: false, audioPause: false, audio: audio1));
-    });
+    on<AudioPlayerInitialEvent>((event, emit) async {});
     on<AudioEventStop>((event, emit) async {
       try {
         audioPlayer1.pause();
@@ -46,6 +43,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
             audio: event.audio));
       }
     });
+    
   }
 }
 
