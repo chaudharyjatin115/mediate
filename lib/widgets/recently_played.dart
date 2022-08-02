@@ -15,13 +15,13 @@ class RecentlyPlayed extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: audios.length,
+        itemCount: audiosNature.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
               context
                   .read<AudioPlayerBloc>()
-                  .add(AudioPlayEventRemote(audio: audios[index]));
+                  .add(AudioPlayEventRemote(audio: audiosNature[index]));
             },
             child: Column(
               children: [
@@ -41,7 +41,8 @@ class RecentlyPlayed extends StatelessWidget {
                                 Colors.black.withOpacity(0.8),
                                 BlendMode.dstATop),
                             fit: BoxFit.cover,
-                            image: AssetImage('${audios[index].coverImage}'),
+                            image:
+                                AssetImage('${audiosNature[index].coverImage}'),
                           ),
                         ),
                       ),
@@ -54,7 +55,7 @@ class RecentlyPlayed extends StatelessWidget {
                         width: 80,
                         child: Center(
                             child: Text(
-                          '${audios[index].name}',
+                          '${audiosNature[index].name}',
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -93,7 +94,7 @@ class RecentlyPlayed extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          '${audios[index].length} mins',
+                          '${audiosNature[index].length} mins',
                           style: const TextStyle(
                               color: Colors.white, fontSize: 12.0),
                         ),

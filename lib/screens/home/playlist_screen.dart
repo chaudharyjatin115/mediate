@@ -23,7 +23,7 @@ class PlayListScreen extends StatelessWidget {
                           fit: BoxFit.cover,
                           colorFilter: ColorFilter.mode(
                               Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                          image: AssetImage('${audio1.coverImage}'))),
+                          image: AssetImage('${audio1Nature.coverImage}'))),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 110.0, left: 20),
@@ -38,7 +38,7 @@ class PlayListScreen extends StatelessWidget {
                           width: 80,
                           child: Center(
                               child: Text(
-                            '${audio1.name}',
+                            '${audio1Nature.name}',
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -81,7 +81,7 @@ class PlayListScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 18.0),
                             child: Text(
-                              '00:0${audio1.length}:00',
+                              '00:0${audio1Nature.length}:00',
                               style: const TextStyle(color: Colors.white),
                             ),
                           )
@@ -109,7 +109,7 @@ class PlayListScreen extends StatelessWidget {
                 SizedBox(
                   height: 500,
                   child: ListView.builder(
-                      itemCount: audios.length,
+                    itemCount: audiosNature.length,
                       itemBuilder: (BuildContext contex, int index) {
                         return SizedBox(
                           height: 100,
@@ -131,7 +131,7 @@ class PlayListScreen extends StatelessWidget {
                                           image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: AssetImage(
-                                                  '${audios[index].coverImage}'))),
+                                                '${audiosNature[index].coverImage}'))),
                                     ),
                                   ],
                                 ),
@@ -141,12 +141,12 @@ class PlayListScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    '${audios[index].name}',
+                                  '${audiosNature[index].name}',
                                     style: const TextStyle(
                                       color: Colors.white, fontSize: 15.0),
                                   ),
                                 Text(
-                                  '${audios[index].category}',
+                                  '${audiosNature[index].category}',
                                   style: const TextStyle(color: Colors.white),
                                 )
                                 ],
@@ -155,7 +155,7 @@ class PlayListScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left:115.0),
                               child: Text(
-                                '00:${audios[index].length}:00',
+                                '00:${audiosNature[index].length}:00',
                                 style: const TextStyle(color: Colors.white),
                               ),
                             )

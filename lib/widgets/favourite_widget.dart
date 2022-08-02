@@ -15,7 +15,7 @@ class FavouritesContainer extends StatelessWidget {
       height: 145,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        itemCount: audios.length,
+        itemCount: audiosNature.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
@@ -24,7 +24,7 @@ class FavouritesContainer extends StatelessWidget {
               onTap: (() {
                 context
                     .read<AudioPlayerBloc>()
-                    .add(AudioPlayEventRemote(audio: audios[index]));
+                    .add(AudioPlayEventRemote(audio: audiosNature[index]));
               }),
               child: Container(
                 decoration: BoxDecoration(
@@ -49,7 +49,8 @@ class FavouritesContainer extends StatelessWidget {
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image:
-                                    AssetImage('${audios[index].coverImage}'),
+                                    AssetImage(
+                                    '${audiosNature[index].coverImage}'),
                               ),
                             ),
                           ),
@@ -72,7 +73,7 @@ class FavouritesContainer extends StatelessWidget {
                                   width: 80,
                                   child: Center(
                                       child: Text(
-                                    '${audios[index].name}',
+                                    '${audiosNature[index].name}',
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),
@@ -86,7 +87,7 @@ class FavouritesContainer extends StatelessWidget {
                                   width: 11.0,
                                 ),
                                 Text(
-                                  '${audios[index].length} mins',
+                                  '${audiosNature[index].length} mins',
                                   style: const TextStyle(color: Colors.white),
                                 )
                               ],

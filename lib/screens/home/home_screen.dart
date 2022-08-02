@@ -56,7 +56,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           title: Text(
-                            audio1.name!,
+                            audio1Nature.name!,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
@@ -88,7 +88,7 @@ class HomeScreen extends StatelessWidget {
                             ),
                           ),
                           title: Text(
-                            audio1.name!,
+                            audio1Nature.name!,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(

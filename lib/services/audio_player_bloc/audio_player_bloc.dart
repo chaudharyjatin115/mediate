@@ -9,7 +9,7 @@ import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   AudioPlayerBloc()
       : super(AudioPlayerInitialState(
-            audio: audio1, audioPause: false, audioPlay: false)) {
+            audio: audio1Nature, audioPause: false, audioPlay: false)) {
     on<AudioPlayEventRemote>((event, emit) async {
       try {
         audioPlayer1.setUrl(event.audio.audioUrl!);
@@ -22,7 +22,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
             error: e.toString(),
             audioPause: false,
             audioPlay: false,
-            audio: audio1));
+            audio: audio1Nature));
       }
     });
     on<AudioPlayerInitialEvent>((event, emit) async {});
