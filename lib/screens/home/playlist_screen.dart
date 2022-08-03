@@ -1,10 +1,13 @@
-
-
 import 'package:flutter/material.dart';
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/models/models.dart';
+import 'package:mediate/widgets/cached_image_provider.dart';
 
+// this is the screen which shows up when clicked on playlists it accepts audio list category as input
 class PlayListScreen extends StatelessWidget {
-  const PlayListScreen({Key? key}) : super(key: key);
+  final AudioListCategory audioListCategory;
+  const PlayListScreen({Key? key, required this.audioListCategory})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,18 +17,24 @@ class PlayListScreen extends StatelessWidget {
           children: [
             Stack(
               children: [
-                Container(
-                  height: 250,
-                  width: MediaQuery.of(context).size.width,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(13.0),
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                          image: AssetImage(
-                              '$nature.audioCatList[1].coverImage'))),
-                ),
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(13.0),
+                    child: CachedImageProvider(
+                        imageUrl: audioListCategory.coverListImage,
+                        height: 250,
+                        width: MediaQuery.of(context).size.width)),
+                // Container(
+                //   height: 250,
+                //   width: MediaQuery.of(context).size.width,
+                //   decoration: BoxDecoration(
+                //       borderRadius: BorderRadius.circular(13.0),
+                //       image: DecorationImage(
+                //           fit: BoxFit.cover,
+                //           // colorFilter: ColorFilter.mode(
+                //           //     Colors.black.withOpacity(0.8), BlendMode.dstATop),
+                //           image:
+                //               NetworkImage('$audioListCategory.coverImage'))),
+                // ),
                 Padding(
                   padding: const EdgeInsets.only(top: 110.0, left: 20),
                   child: Column(
@@ -52,9 +61,9 @@ class PlayListScreen extends StatelessWidget {
                       const SizedBox(
                         height: 15.0,
                       ),
-                      const Text(
-                        'Daily Calm',
-                        style: TextStyle(
+                      Text(
+                        audioListCategory.coverListName,
+                        style: const TextStyle(
                             color: Colors.white,
                             fontSize: 30,
                             fontWeight: FontWeight.bold),
@@ -111,59 +120,51 @@ class PlayListScreen extends StatelessWidget {
                   height: 500,
                   child: ListView.builder(
                     itemCount: audiosNature.length,
-                      itemBuilder: (BuildContext contex, int index) {
-                        return SizedBox(
-                          height: 100,
-                          width: MediaQuery.of(context).size.width,
-                          child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.fromLTRB(
-                                    10.0, 00, 10.0, 00),
-                                child: Stack(
-                                  children: [
-                                    Container(
-                                      height: 90,
-                                      width: 90,
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(13.0),
-                                          image: DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: AssetImage(
-                                                audiosNature[index]
-                                                    .coverImage))),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            const SizedBox(width: 30),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
+                    itemBuilder: (BuildContext contex, int index) {
+                      return SizedBox(
+                        height: 100,
+                        width: MediaQuery.of(context).size.width,
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(10.0, 00, 10.0, 00),
+                              child: Stack(
                                 children: [
-                                  Text(
+                                  CachedImageProvider(
+                                      imageUrl: audioListCategory
+                                          .audioCatList[index].coverImage,
+                                      height: 90,
+                                      width: 90)
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 30),
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
                                   audiosNature[index].name,
-                                    style: const TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 15.0),
-                                  ),
+                                ),
                                 Text(
                                   audiosNature[index].category,
                                   style: const TextStyle(color: Colors.white),
                                 )
-                                ],
-                              ),
-                            
+                              ],
+                            ),
                             Padding(
-                              padding: const EdgeInsets.only(left:115.0),
+                              padding: const EdgeInsets.only(left: 115.0),
                               child: Text(
                                 '00:${audiosNature[index].length}:00',
                                 style: const TextStyle(color: Colors.white),
                               ),
                             )
-                            ],
-                          ),
-                        );
+                          ],
+                        ),
+                      );
                     },
                   ),
                 )

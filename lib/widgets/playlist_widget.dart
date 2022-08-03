@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'package:mediate/data/data_private.dart';
+import 'package:mediate/screens/home/playlist_screen.dart';
+import 'package:mediate/widgets/cached_image_provider.dart';
 
-
-class FavouritesContainer extends StatelessWidget {
-  const FavouritesContainer({
+class PlaylistContainer extends StatelessWidget {
+  const PlaylistContainer({
     Key? key,
   }) : super(key: key);
 
@@ -21,6 +22,16 @@ class FavouritesContainer extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (() {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: ((context) {
+                      return PlayListScreen(
+                        audioListCategory: audioCategoryLists[index],
+                      );
+                    }),
+                  ),
+                );
                 // context
                 //     .read<AudioPlayerBloc>()
                 //     .add(AudioPlayEventRemote(audio: audiosNature[index]));
@@ -40,19 +51,14 @@ class FavouritesContainer extends StatelessWidget {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(12.0, 10, 12.0, 10),
-                          child: Container(
-                            height: 105,
-                            width: 100,
-                            decoration: BoxDecoration(
+                          child: ClipRRect(
                               borderRadius: BorderRadius.circular(13.0),
-                              image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image:
-                                    NetworkImage(
-                                    audioCategoryLists[index].coverListImage),
-                              ),
-                            ),
-                          ),
+                              child: CachedImageProvider(
+                                height: 105,
+                                width: 107,
+                                imageUrl:
+                                    audioCategoryLists[index].coverListImage,
+                              )),
                         ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,

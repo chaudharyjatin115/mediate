@@ -1,8 +1,10 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/widgets/cached_image_provider.dart';
 
 class RecentlyPlayed extends StatelessWidget {
   const RecentlyPlayed({Key? key}) : super(key: key);
@@ -29,23 +31,15 @@ class RecentlyPlayed extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(10.0, 7.0, 7.0, 0.0),
-                      child: Container(
-                        height: 110,
-                        width: 170,
-                        decoration: BoxDecoration(
+                      child: ClipRRect(
                           borderRadius: const BorderRadius.only(
                               topLeft: Radius.circular(8.0),
                               topRight: Radius.circular(8.0)),
-                          image: DecorationImage(
-                            colorFilter: ColorFilter.mode(
-                                Colors.black.withOpacity(0.8),
-                                BlendMode.dstATop),
-                            fit: BoxFit.cover,
-                            image:
-                                NetworkImage(randomList[index].coverImage),
-                          ),
-                        ),
-                      ),
+                          child: CachedImageProvider(
+                            height: 110,
+                            width: 170,
+                            imageUrl: randomList[index].coverImage,
+                          )),
                     ),
                     Positioned(
                       bottom: 20,
@@ -81,10 +75,10 @@ class RecentlyPlayed extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(left: 10.0),
                         child: Text(
-                          'Daily Calm',
+                          randomList[index].category,
                           style: TextStyle(fontSize: 15.0, color: Colors.white),
                         ),
                       ),

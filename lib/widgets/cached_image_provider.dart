@@ -19,7 +19,7 @@ class CachedImageProvider extends StatelessWidget {
       fit: BoxFit.cover,
       height: height,
       width: width,
-      color: const Color(0xFF0E3311).withOpacity(0.8),
+      // color: const Color(0xFF0E3311).withOpacity(90.0),
       imageUrl: imageUrl,
       progressIndicatorBuilder: (context, url, downloadProgress) => Container(
         height: 15,

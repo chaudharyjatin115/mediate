@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
@@ -6,7 +7,8 @@ import 'package:mediate/screens/player/player_screen.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
-import 'package:mediate/widgets/favourite_widget.dart';
+import 'package:mediate/widgets/cached_image_provider.dart';
+import 'package:mediate/widgets/playlist_widget.dart';
 import 'package:mediate/widgets/image_header.dart';
 import 'package:mediate/widgets/mood_bar.dart';
 
@@ -44,16 +46,13 @@ class HomeScreen extends StatelessWidget {
                               vertical: 4, horizontal: 16),
                           enabled: true,
                           tileColor: const Color(0xff283a75),
-                          leading: Container(
-                            padding: const EdgeInsets.only(right: 20, top: 10),
-                            height: 40,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7.0),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(state.audio!.coverImage)),
-                            ),
+                          leading: ClipRRect(
+                              borderRadius: BorderRadius.circular(13.0),
+                              child: CachedImageProvider(
+                                height: 40,
+                                width: 45,
+                                imageUrl: state.audio!.audioUrl,
+                              )
                           ),
                           title: Text(
                             audio1Nature.name,
@@ -76,15 +75,12 @@ class HomeScreen extends StatelessWidget {
                           enabled: true,
                           onTap: () {},
                           tileColor: const Color(0xff283a75),
-                          leading: Container(
-                            padding: const EdgeInsets.only(right: 20, top: 10),
-                            height: 40,
-                            width: 45,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(7.0),
-                              image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(state.audio!.coverImage)),
+                          leading: ClipRRect(
+                            borderRadius: BorderRadius.circular(13.0),
+                            child: CachedImageProvider(
+                              height: 40,
+                              width: 45,
+                              imageUrl: state.audio!.audioUrl,
                             ),
                           ),
                           title: Text(
@@ -153,7 +149,7 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const FavouritesContainer(),
+              const PlaylistContainer(),
             ],
           ),
         ],
@@ -161,3 +157,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
