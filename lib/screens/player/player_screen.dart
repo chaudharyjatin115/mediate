@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/data/data_private.dart';
+
 import 'package:mediate/models/models.dart';
 import 'package:mediate/widgets/player_controls.dart';
 import 'package:mediate/widgets/volume_slider.dart';
@@ -38,7 +38,7 @@ class PlayerScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
                 child: Image(
                   fit: BoxFit.cover,
-                  image: AssetImage(audio.coverImage!),
+                  image: NetworkImage(audio.coverImage),
                 ),
               ),
             ),

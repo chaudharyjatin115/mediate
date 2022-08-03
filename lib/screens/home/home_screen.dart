@@ -52,11 +52,11 @@ class HomeScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(7.0),
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage(state.audio!.coverImage!)),
+                                  image: NetworkImage(state.audio!.coverImage)),
                             ),
                           ),
                           title: Text(
-                            audio1Nature.name!,
+                            audio1Nature.name,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
@@ -84,11 +84,11 @@ class HomeScreen extends StatelessWidget {
                               borderRadius: BorderRadius.circular(7.0),
                               image: DecorationImage(
                                   fit: BoxFit.cover,
-                                  image: AssetImage(state.audio!.coverImage!)),
+                                  image: NetworkImage(state.audio!.coverImage)),
                             ),
                           ),
                           title: Text(
-                            audio1Nature.name!,
+                            audio1Nature.name,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
@@ -101,8 +101,8 @@ class HomeScreen extends StatelessWidget {
                           ),
                         );
                       } else if (state is AudioLoadingState) {
-                        return Center(
-                          child: Container(
+                        return const Center(
+                          child: SizedBox(
                               width: 5,
                               height: 5,
                               child: CircularProgressIndicator()),
@@ -122,7 +122,7 @@ class HomeScreen extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(left: 25),
                 child: Text(
-                  'Recently Played',
+                  'Suggested',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
@@ -140,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Your Favourites',
+                      'Playlists',
                       style: TextStyle(color: Colors.white),
                     ),
                     IconButton(

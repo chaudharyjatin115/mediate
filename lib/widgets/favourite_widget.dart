@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:mediate/data/data_private.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
+
 
 class FavouritesContainer extends StatelessWidget {
   const FavouritesContainer({
@@ -15,16 +14,16 @@ class FavouritesContainer extends StatelessWidget {
       height: 145,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        itemCount: audiosNature.length,
+        itemCount: audioCategoryLists.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (() {
-                context
-                    .read<AudioPlayerBloc>()
-                    .add(AudioPlayEventRemote(audio: audiosNature[index]));
+                // context
+                //     .read<AudioPlayerBloc>()
+                //     .add(AudioPlayEventRemote(audio: audiosNature[index]));
               }),
               child: Container(
                 decoration: BoxDecoration(
@@ -49,8 +48,8 @@ class FavouritesContainer extends StatelessWidget {
                               image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image:
-                                    AssetImage(
-                                    '${audiosNature[index].coverImage}'),
+                                    NetworkImage(
+                                    audioCategoryLists[index].coverListImage),
                               ),
                             ),
                           ),
@@ -73,7 +72,7 @@ class FavouritesContainer extends StatelessWidget {
                                   width: 80,
                                   child: Center(
                                       child: Text(
-                                    '${audiosNature[index].name}',
+                                    audioCategoryLists[index].coverListName,
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),
@@ -87,7 +86,7 @@ class FavouritesContainer extends StatelessWidget {
                                   width: 11.0,
                                 ),
                                 Text(
-                                  '${audiosNature[index].length} mins',
+                                  '${audioCategoryLists[index].playlistDuration} mins',
                                   style: const TextStyle(color: Colors.white),
                                 )
                               ],

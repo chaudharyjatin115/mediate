@@ -12,7 +12,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
             audio: audio1Nature, audioPause: false, audioPlay: false)) {
     on<AudioPlayEventRemote>((event, emit) async {
       try {
-        audioPlayer1.setUrl(event.audio.audioUrl!);
+        audioPlayer1.setUrl(event.audio.audioUrl);
         audioPlayer1.play();
         print('audio playing');
         emit(AudioPlayState(
@@ -29,7 +29,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     on<AudioEventStop>((event, emit) async {
       try {
         audioPlayer1.pause();
-        print('audioPause');
+        // print('audioPause');
         emit(AudioPauseState(
           audioPause: true,
           audioPlay: false,

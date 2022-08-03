@@ -23,7 +23,8 @@ class PlayListScreen extends StatelessWidget {
                           fit: BoxFit.cover,
                           colorFilter: ColorFilter.mode(
                               Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                          image: AssetImage('${audio1Nature.coverImage}'))),
+                          image: AssetImage(
+                              '$nature.audioCatList[1].coverImage'))),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(top: 110.0, left: 20),
@@ -38,7 +39,7 @@ class PlayListScreen extends StatelessWidget {
                           width: 80,
                           child: Center(
                               child: Text(
-                            '${audio1Nature.name}',
+                            audio1Nature.name,
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -131,7 +132,8 @@ class PlayListScreen extends StatelessWidget {
                                           image: DecorationImage(
                                               fit: BoxFit.cover,
                                               image: AssetImage(
-                                                '${audiosNature[index].coverImage}'))),
+                                                audiosNature[index]
+                                                    .coverImage))),
                                     ),
                                   ],
                                 ),
@@ -141,12 +143,12 @@ class PlayListScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                  '${audiosNature[index].name}',
+                                  audiosNature[index].name,
                                     style: const TextStyle(
                                       color: Colors.white, fontSize: 15.0),
                                   ),
                                 Text(
-                                  '${audiosNature[index].category}',
+                                  audiosNature[index].category,
                                   style: const TextStyle(color: Colors.white),
                                 )
                                 ],

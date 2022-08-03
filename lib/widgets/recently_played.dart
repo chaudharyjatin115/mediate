@@ -15,13 +15,13 @@ class RecentlyPlayed extends StatelessWidget {
       child: ListView.builder(
         shrinkWrap: true,
         scrollDirection: Axis.horizontal,
-        itemCount: audiosNature.length,
+        itemCount: randomList.length,
         itemBuilder: (BuildContext context, int index) {
           return GestureDetector(
             onTap: () {
               context
                   .read<AudioPlayerBloc>()
-                  .add(AudioPlayEventRemote(audio: audiosNature[index]));
+                  .add(AudioPlayEventRemote(audio: randomList[index]));
             },
             child: Column(
               children: [
@@ -42,7 +42,7 @@ class RecentlyPlayed extends StatelessWidget {
                                 BlendMode.dstATop),
                             fit: BoxFit.cover,
                             image:
-                                AssetImage('${audiosNature[index].coverImage}'),
+                                NetworkImage(randomList[index].coverImage),
                           ),
                         ),
                       ),
@@ -55,7 +55,7 @@ class RecentlyPlayed extends StatelessWidget {
                         width: 80,
                         child: Center(
                             child: Text(
-                          '${audiosNature[index].name}',
+                          randomList[index].name,
                           style: const TextStyle(
                             color: Colors.white,
                           ),
@@ -94,7 +94,7 @@ class RecentlyPlayed extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
-                          '${audiosNature[index].length} mins',
+                          '${randomList[index].length} mins',
                           style: const TextStyle(
                               color: Colors.white, fontSize: 12.0),
                         ),
