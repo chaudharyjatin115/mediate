@@ -18,10 +18,12 @@ class AudioListCategory {
   final List<AudioCategory> audioCatList;
   final String coverListName;
   final double playlistDuration;
+  final String playlistInfo;
   AudioListCategory({
     required this.coverListImage,
     required this.audioCatList,
     required this.coverListName,
     required this.playlistDuration,
+    required this.playlistInfo,
   });
 }

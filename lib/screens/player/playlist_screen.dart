@@ -18,23 +18,12 @@ class PlayListScreen extends StatelessWidget {
             Stack(
               children: [
                 ClipRRect(
-                    borderRadius: BorderRadius.circular(13.0),
-                    child: CachedImageProvider(
-                        imageUrl: audioListCategory.coverListImage,
-                        height: 250,
-                        width: MediaQuery.of(context).size.width)),
-                // Container(
-                //   height: 250,
-                //   width: MediaQuery.of(context).size.width,
-                //   decoration: BoxDecoration(
-                //       borderRadius: BorderRadius.circular(13.0),
-                //       image: DecorationImage(
-                //           fit: BoxFit.cover,
-                //           // colorFilter: ColorFilter.mode(
-                //           //     Colors.black.withOpacity(0.8), BlendMode.dstATop),
-                //           image:
-                //               NetworkImage('$audioListCategory.coverImage'))),
-                // ),
+                  borderRadius: BorderRadius.circular(13.0),
+                  child: CachedImageProvider(
+                      imageUrl: audioListCategory.coverListImage,
+                      height: 250,
+                      width: MediaQuery.of(context).size.width),
+                ),
                 Padding(
                   padding: const EdgeInsets.only(top: 110.0, left: 20),
                   child: Column(
@@ -48,7 +37,7 @@ class PlayListScreen extends StatelessWidget {
                           width: 80,
                           child: Center(
                               child: Text(
-                            audio1Nature.name,
+                            audioListCategory.coverListName,
                             style: const TextStyle(
                               color: Colors.white,
                             ),
@@ -91,7 +80,7 @@ class PlayListScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(right: 18.0),
                             child: Text(
-                              '00:0${audio1Nature.length}:00',
+                              '00:0${audioListCategory.audioCatList.length}:00',
                               style: const TextStyle(color: Colors.white),
                             ),
                           )
@@ -109,11 +98,11 @@ class PlayListScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                const Padding(
-                  padding: EdgeInsets.only(left: 8.0),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    'The Meditation list is largely focused on accepting what is happening to your mindset and developing a awareness that  helps us to let go off negative emotions',
-                    style: TextStyle(color: Colors.white),
+                    audioListCategory.playlistInfo,
+                    style: const TextStyle(color: Colors.white),
                   ),
                 ),
                 SizedBox(
@@ -132,7 +121,8 @@ class PlayListScreen extends StatelessWidget {
                                   const EdgeInsets.fromLTRB(10.0, 00, 10.0, 00),
                               child: Stack(
                                 children: [
-                                  ClipRRect(borderRadius: BorderRadius.circular(10.0),
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.0),
                                     child: CachedImageProvider(
                                         imageUrl: audioListCategory
                                             .audioCatList[index].coverImage,
@@ -147,12 +137,13 @@ class PlayListScreen extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  audiosNature[index].name,
+                                  audioListCategory.audioCatList[index].name,
                                   style: const TextStyle(
                                       color: Colors.white, fontSize: 15.0),
                                 ),
                                 Text(
-                                  audiosNature[index].category,
+                                  audioListCategory
+                                      .audioCatList[index].category,
                                   style: const TextStyle(color: Colors.white),
                                 )
                               ],

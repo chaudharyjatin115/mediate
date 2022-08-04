@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:mediate/data/data_private.dart';
-import 'package:mediate/screens/home/playlist_screen.dart';
+import 'package:mediate/screens/player/playlist_screen.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
 
 class PlaylistContainer extends StatelessWidget {
