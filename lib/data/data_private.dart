@@ -65,7 +65,8 @@ final List<AudioCategory> synthWave = [
 final List<AudioCategory> study = [
   audio1Study,
   audio3Study,
-  audio1Study,
+  audio2Study,
+
 ];
 
 final audio1Study = AudioCategory(
@@ -74,7 +75,12 @@ final audio1Study = AudioCategory(
     50,
     'Study',
     'https://od.lk/s/NjVfNjQwMzY0MzBf/ASMR%20Satisfying%20Writing%2C%20Page%20Turning%2C%20Keyboard%20Typing%20%EC%9D%B4%EA%B1%B4%20%EC%88%98%EB%A9%B4%EC%A0%9C%20%EC%98%81%EC%83%81%EC%9E%85%EB%8B%88%EB%8B%A4.mp3');
-
+final audio2Study = AudioCategory(
+    'https://i.ibb.co/NCyNSm4/iewek-gnos-hh-Ux08-Pu-Ypc-unsplash.jpg',
+    'Concentration',
+    30,
+    'study',
+    'https://od.lk/s/NjVfNjQwNTIwNDVf/Y2Mate.is%20-%201%20Hour%20Of%20Music%20For%20Studying%2C%20Concentration%20And%20Work%20-%20Ambient%20Study%20Music%20To%20Concentrate-ZGUbU1RKKPc-64k-1659612881365.mp3');
 final audio3Study = AudioCategory(
     'https://i.ibb.co/hKYLP5Y/ben-blennerhassett-u1u-Swk3b-CQ-unsplash.jpg',
     'Lofi-Audio',
