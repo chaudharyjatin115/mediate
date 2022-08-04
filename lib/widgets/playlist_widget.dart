@@ -64,9 +64,9 @@ class PlaylistContainer extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              'Train your Mind',
-                              style: TextStyle(color: Colors.white),
+                            Text(
+                              audioCategoryLists[index].coverListName,
+                              style: const TextStyle(color: Colors.white),
                             ),
                             const SizedBox(
                               height: 17.0,
