@@ -76,10 +76,11 @@ class RecentlyPlayed extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: EdgeInsets.only(left: 10.0),
+                        padding: const EdgeInsets.only(left: 10.0),
                         child: Text(
                           randomList[index].category,
-                          style: TextStyle(fontSize: 15.0, color: Colors.white),
+                          style: const TextStyle(
+                              fontSize: 15.0, color: Colors.white),
                         ),
                       ),
                       const SizedBox(

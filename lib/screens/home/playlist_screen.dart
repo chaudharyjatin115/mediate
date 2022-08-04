@@ -132,11 +132,13 @@ class PlayListScreen extends StatelessWidget {
                                   const EdgeInsets.fromLTRB(10.0, 00, 10.0, 00),
                               child: Stack(
                                 children: [
-                                  CachedImageProvider(
-                                      imageUrl: audioListCategory
-                                          .audioCatList[index].coverImage,
-                                      height: 90,
-                                      width: 90)
+                                  ClipRRect(borderRadius: BorderRadius.circular(10.0),
+                                    child: CachedImageProvider(
+                                        imageUrl: audioListCategory
+                                            .audioCatList[index].coverImage,
+                                        height: 90,
+                                        width: 90),
+                                  )
                                 ],
                               ),
                             ),

@@ -14,7 +14,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
       try {
         audioPlayer1.setUrl(event.audio.audioUrl);
         audioPlayer1.play();
-        print('audio playing');
+        // print('audio playing');
         emit(AudioPlayState(
             audioPlay: true, audioPause: false, audio: event.audio));
       } catch (e) {
