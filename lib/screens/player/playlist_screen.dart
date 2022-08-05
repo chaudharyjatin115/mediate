@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
 import 'package:mediate/models/models.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
 
 // this is the screen which shows up when clicked on playlists it accepts audio list category as input
@@ -70,7 +73,12 @@ class PlayListScreen extends StatelessWidget {
                             height: 40,
                             width: 80,
                             child: IconButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                context.read<AudioPlayerBloc>().add(
+                                    AudioPlayEventRemote(
+                                        audio: audioListCategory
+                                            .audioCatList.first));
+                              },
                               icon: const Icon(
                                 Icons.play_arrow,
                                 color: Colors.deepPurple,
