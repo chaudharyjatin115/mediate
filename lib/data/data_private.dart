@@ -1,6 +1,6 @@
 import 'package:mediate/models/models.dart';
 
-// nature audios refrence
+// nature audios refrence category
 final audio1Nature = AudioCategory(
     'https://i.ibb.co/K0chJXY/osman-rana-GXEZu-Wo5m4-I-unsplash.jpg',
     'Rainy Night',
@@ -33,10 +33,7 @@ final List<AudioCategory> audiosNature = [
   audio3Nature,
   audio4Nature,
 ];
-final List<AudioCategory> audios = [];
 
-// study concentration music
-//
 final nature = AudioListCategory(
     coverListImage: 'assets/images/cover/cover_evening.jpg',
     audioCatList: audiosNature,
@@ -46,7 +43,12 @@ final nature = AudioListCategory(
         'this is largely focused on the sounds that are produced in nature they help you calm and relaxed meanwhile making you fall asleep');
 
 // starting refrence for audio study
-
+final audio3Synthwave = AudioCategory(
+    'https://i.ibb.co/Jdm0pfz/Krzysztof-hepner-C1-JTOq-u-Tp-Y-unsplash.jpg',
+    'Far away',
+    30,
+    'SynthWAve',
+    'https://od.lk/s/NjVfNjQwNTQ0NTRf/Y2Mate.is%20-%20%EF%BC%A6%EF%BD%8C%EF%BD%99%20%EF%BC%A1%EF%BD%97%EF%BD%81%EF%BD%99%20-%20chillwave%20%26%20synthwave%20Mix-MmT9FnQquOQ-128k-1659676751378.mp3');
 final audio2Synthwave = AudioCategory(
     'https://i.ibb.co/XxV2F1Y/artemis-faul-CUbr8ci2-HUE-unsplash.jpg',
     '80vibes',
@@ -61,14 +63,16 @@ final audio1SynthWave = AudioCategory(
     'https://od.lk/s/NjVfNjQwNTAwMjVf/Solitude%20-%203%20a.m%20-%20Electronic%2C%20Synthwave%20%26%20Chillsynth%20-.mp3');
 final List<AudioCategory> synthWave = [
   audio2Synthwave,
+  audio1SynthWave,
+  audio3Synthwave
 ];
+// study concentration music
 final List<AudioCategory> study = [
   audio1Study,
   audio3Study,
   audio2Study,
-
 ];
-
+// audio category with image url and audio url for study
 final audio1Study = AudioCategory(
     'https://i.ibb.co/8mMMgC7/john-mark-smith-F-c-HIM0-Kcy4-unsplash.jpg',
     'Turning pages',
@@ -87,12 +91,13 @@ final audio3Study = AudioCategory(
     10,
     'Study',
     'https://od.lk/s/NjVfNjQwMzU0MDhf/lofi-study-112191.mp3');
-
 final List<AudioListCategory> audioCategoryLists = [
   audioListNtureCategory,
   audioListCategoryStudy,
   audioSynthwaveCategory
 ];
+//playlist details
+
 final audioListNtureCategory = AudioListCategory(
     coverListImage:
         'https://i.ibb.co/GH4zjdj/sapan-patel-i9-Q9bc-Wgf-E-unsplash.jpg',
