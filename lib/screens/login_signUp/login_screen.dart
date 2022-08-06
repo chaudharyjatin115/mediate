@@ -72,9 +72,7 @@ class LoginView extends HookWidget {
                     },
                     assetLink: 'assets/images/google-logo.png',
                   ),
-                  ThirdPartySignInButton(
-                      onTap: () {},
-                      assetLink: 'assets/images/facebook-logo.png'),
+                
                 ],
               ),
               const SizedBox(

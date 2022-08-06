@@ -44,6 +44,8 @@ class MyApp extends StatelessWidget {
                 ..add(AudioPlayerInitialEvent(audio: audio1Nature)))
         ],
         child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+
             theme: ThemeData(
               // navigationBarTheme
               //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),

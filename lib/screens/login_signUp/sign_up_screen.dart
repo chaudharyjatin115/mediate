@@ -46,9 +46,7 @@ class SignUpScreen extends HookWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ThirdPartySignInButton(
-                      onTap: () {},
-                      assetLink: 'assets/images/facebook-logo.png'),
+                  
                   ThirdPartySignInButton(
                       onTap: () {
                         context.read<AuthBloc>().add(AuthEventGoogleSignIn());
