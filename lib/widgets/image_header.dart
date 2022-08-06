@@ -1,7 +1,10 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
+
+import '../services/auth_bloc/auth_bloc.dart';
+import '../services/auth_bloc/login_auth_state.dart';
 
 class ImageHeader extends StatelessWidget {
   const ImageHeader({
@@ -10,7 +13,7 @@ class ImageHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final user = FirebaseAuth.instance.currentUser!.displayName;
+    final user = FirebaseAuth.instance.currentUser!.displayName;
     return Stack(
       children: [
         Container(
@@ -32,9 +35,13 @@ class ImageHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              CircleAvatar(
-                radius: 15.0,
-                backgroundImage: NetworkImage(''),
+              BlocBuilder<AuthBloc, AuthState>(
+                builder: (context, state) {
+                  return CircleAvatar(
+                    radius: 15.0,
+                    backgroundImage: NetworkImage(state.user!.photoURL!),
+                  );
+                },
               ),
               IconButton(
                 highlightColor: Colors.black,
@@ -64,7 +71,7 @@ class ImageHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                FirebaseAuth.instance.currentUser!.displayName!,
+                user!,
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
