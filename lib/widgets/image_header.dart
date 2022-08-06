@@ -1,10 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/widgets/cached_image_provider.dart';
 
-import '../services/auth_bloc/auth_bloc.dart';
-import '../services/auth_bloc/login_auth_state.dart';
+
 
 class ImageHeader extends StatelessWidget {
   const ImageHeader({
@@ -35,14 +32,10 @@ class ImageHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              BlocBuilder<AuthBloc, AuthState>(
-                builder: (context, state) {
-                  return CircleAvatar(
+              const CircleAvatar(
                     radius: 15.0,
-                    backgroundImage: NetworkImage(state.user!.photoURL!),
-                  );
-                },
-              ),
+                  backgroundImage: AssetImage('assets/images/face_co.png')),
+              
               IconButton(
                 highlightColor: Colors.black,
                 color: Colors.white,
@@ -70,9 +63,9 @@ class ImageHeader extends StatelessWidget {
                   fontSize: 20,
                 ),
               ),
-              Text(
-                user!,
-                style: const TextStyle(
+              const Text(
+                'there',
+                style: TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold),

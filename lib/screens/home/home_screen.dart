@@ -53,6 +53,7 @@ class HomeScreen extends StatelessWidget {
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
+                            iconSize: 35,
                             icon: const Icon(Icons.pause_circle_filled),
                             onPressed: () {
                               context
@@ -83,6 +84,7 @@ class HomeScreen extends StatelessWidget {
                           ),
                           trailing: IconButton(
                             icon: const Icon(Icons.play_circle_filled),
+                            iconSize: 35,
                             onPressed: () {
                               context.read<AudioPlayerBloc>().add(
                                   AudioPlayEventRemote(audio: state.audio!));
