@@ -1,5 +1,7 @@
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:mediate/widgets/cached_image_provider.dart';
 
 class ImageHeader extends StatelessWidget {
   const ImageHeader({
@@ -30,9 +32,9 @@ class ImageHeader extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 15.0,
-                backgroundImage: AssetImage('assets/images/face_co.png'),
+                backgroundImage: NetworkImage(''),
               ),
               IconButton(
                 highlightColor: Colors.black,
@@ -54,16 +56,16 @@ class ImageHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Good Afternoon',
+                'Hey',
                 style: TextStyle(
                   overflow: TextOverflow.ellipsis,
                   color: Colors.grey[300],
                   fontSize: 20,
                 ),
               ),
-              const Text(
-                'Jatin',
-                style: TextStyle(
+              Text(
+                FirebaseAuth.instance.currentUser!.displayName!,
+                style: const TextStyle(
                     color: Colors.white,
                     fontSize: 40.0,
                     fontWeight: FontWeight.bold),

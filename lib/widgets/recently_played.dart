@@ -1,13 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
+
+import 'package:mediate/models/models.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
 
 class RecentlyPlayed extends StatelessWidget {
-  const RecentlyPlayed({Key? key}) : super(key: key);
+  
+  RecentlyPlayed({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

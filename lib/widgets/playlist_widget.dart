@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 
-import 'package:mediate/data/data_private.dart';
-import 'package:mediate/screens/player/playlist_screen.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
 
+import '../services/audio_player_bloc/audio_player_event.dart';
+
 class PlaylistContainer extends StatelessWidget {
-  const PlaylistContainer({
+  List audioList;
+  PlaylistContainer({
     Key? key,
+    required this.audioList,
   }) : super(key: key);
 
   @override
@@ -15,26 +19,16 @@ class PlaylistContainer extends StatelessWidget {
       height: 145,
       width: MediaQuery.of(context).size.width,
       child: ListView.builder(
-        itemCount: audioCategoryLists.length,
+        itemCount: audioList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             padding: const EdgeInsets.all(8.0),
             child: GestureDetector(
               onTap: (() {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: ((context) {
-                      return PlayListScreen(
-                        audioListCategory: audioCategoryLists[index],
-                      );
-                    }),
-                  ),
-                );
-                // context
-                //     .read<AudioPlayerBloc>()
-                //     .add(AudioPlayEventRemote(audio: audiosNature[index]));
+                context
+                    .read<AudioPlayerBloc>()
+                    .add(AudioPlayEventRemote(audio: audioList[index]));
               }),
               child: Container(
                 decoration: BoxDecoration(
@@ -56,8 +50,7 @@ class PlaylistContainer extends StatelessWidget {
                               child: CachedImageProvider(
                                 height: 105,
                                 width: 107,
-                                imageUrl:
-                                    audioCategoryLists[index].coverListImage,
+                                imageUrl: audioList[index].coverImage,
                               )),
                         ),
                         Column(
@@ -65,7 +58,7 @@ class PlaylistContainer extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              audioCategoryLists[index].coverListName,
+                              audioList[index].name,
                               style: const TextStyle(color: Colors.white),
                             ),
                             const SizedBox(
@@ -78,7 +71,7 @@ class PlaylistContainer extends StatelessWidget {
                                   width: 80,
                                   child: Center(
                                       child: Text(
-                                    audioCategoryLists[index].coverListName,
+                                    audioList[index].name,
                                     style: const TextStyle(
                                       color: Colors.white,
                                     ),
@@ -92,7 +85,7 @@ class PlaylistContainer extends StatelessWidget {
                                   width: 11.0,
                                 ),
                                 Text(
-                                  '${audioCategoryLists[index].playlistDuration} mins',
+                                  '${audioList[index].length} mins',
                                   style: const TextStyle(color: Colors.white),
                                 )
                               ],

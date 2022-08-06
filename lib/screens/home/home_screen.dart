@@ -1,18 +1,18 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mediate/data/data_private.dart';
 
-import 'package:mediate/screens/player/player_screen.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
 import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
 import 'package:mediate/widgets/cached_image_provider.dart';
-import 'package:mediate/widgets/playlist_widget.dart';
+
 import 'package:mediate/widgets/image_header.dart';
 import 'package:mediate/widgets/mood_bar.dart';
 
 import 'package:mediate/widgets/recently_played.dart';
+
+import '../../widgets/playlist_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -35,12 +35,7 @@ class HomeScreen extends StatelessWidget {
                       if (state is AudioPlayState) {
                         return ListTile(
                           onTap: () {
-                            Navigator.push(context,
-                                MaterialPageRoute(builder: ((context) {
-                              return PlayerScreen(
-                                audio: state.audio!,
-                              );
-                            })));
+                            
                           },
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 4, horizontal: 16),
@@ -51,11 +46,10 @@ class HomeScreen extends StatelessWidget {
                               child: CachedImageProvider(
                                 height: 40,
                                 width: 45,
-                                imageUrl: state.audio!.audioUrl,
-                              )
-                          ),
+                                imageUrl: state.audio!.coverImage,
+                              )),
                           title: Text(
-                            audio1Nature.name,
+                            state.audio!.name,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
@@ -80,11 +74,11 @@ class HomeScreen extends StatelessWidget {
                             child: CachedImageProvider(
                               height: 40,
                               width: 45,
-                              imageUrl: state.audio!.audioUrl,
+                              imageUrl: state.audio!.coverImage,
                             ),
                           ),
                           title: Text(
-                            audio1Nature.name,
+                            state.audio!.name,
                             style: const TextStyle(color: Colors.white),
                           ),
                           trailing: IconButton(
@@ -118,14 +112,17 @@ class HomeScreen extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(left: 25),
                 child: Text(
-                  'Suggested',
+                  'Study',
                   style: TextStyle(color: Colors.white),
                 ),
               ),
               const SizedBox(
                 height: 5.0,
               ),
-              const RecentlyPlayed(),
+              RecentlyPlayed(),
+              const SizedBox(
+                height: 5.0,
+              ),
               const SizedBox(
                 height: 5.0,
               ),
@@ -136,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Playlists',
+                      'Study',
                       style: TextStyle(color: Colors.white),
                     ),
                     IconButton(
@@ -149,7 +146,11 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              const PlaylistContainer(),
+              PlaylistContainer(
+                audioList: study,
+              ),
+              PlaylistContainer(audioList: audiosNature),
+              PlaylistContainer(audioList: synthWave)
             ],
           ),
         ],
@@ -157,4 +158,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
