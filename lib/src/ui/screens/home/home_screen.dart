@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/data/data_private.dart';
 
-import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
-import 'package:mediate/widgets/cached_image_provider.dart';
-
-import 'package:mediate/widgets/image_header.dart';
-import 'package:mediate/widgets/mood_bar.dart';
-
-import 'package:mediate/widgets/recently_played.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_state.dart';
+import 'package:mediate/src/resources/data/data_private.dart';
+import 'package:mediate/src/ui/widgets/cached_image_provider.dart';
+import 'package:mediate/src/ui/widgets/image_header.dart';
+import 'package:mediate/src/ui/widgets/mood_bar.dart';
+import 'package:mediate/src/ui/widgets/recently_played.dart';
 
 import '../../widgets/playlist_widget.dart';
 
@@ -34,9 +32,7 @@ class HomeScreen extends StatelessWidget {
                     builder: (context, state) {
                       if (state is AudioPlayState) {
                         return ListTile(
-                          onTap: () {
-                            
-                          },
+                          onTap: () {},
                           contentPadding: const EdgeInsets.symmetric(
                               vertical: 4, horizontal: 16),
                           enabled: true,

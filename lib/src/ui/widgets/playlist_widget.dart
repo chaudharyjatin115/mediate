@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
-
-import 'package:mediate/widgets/cached_image_provider.dart';
-
-import '../services/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_bloc.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/src/ui/widgets/cached_image_provider.dart';
 
 class PlaylistContainer extends StatelessWidget {
   List audioList;

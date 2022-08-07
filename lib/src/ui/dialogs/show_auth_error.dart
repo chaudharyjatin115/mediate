@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mediate/dialogs/generic_dialogs.dart';
-import 'package:mediate/services/auth/auth_error.dart';
 
-
+import 'package:mediate/src/blocs/auth_bloc/auth_error.dart';
+import 'package:mediate/src/ui/dialogs/generic_dialogs.dart';
 
 Future<void> showAuthError({
   required AuthError authError,

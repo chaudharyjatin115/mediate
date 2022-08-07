@@ -1,7 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
 
-
-import 'package:mediate/models/models.dart';
+import 'package:mediate/src/models/models.dart';
 
 @immutable
 abstract class AudioPlayerState {
@@ -56,16 +55,14 @@ class AudioPlayerErrorState extends AudioPlayerState {
       AudioCategory? audio})
       : super(audioPause: audioPause, audioPlay: audioPlay, audio: audio);
 }
+
 class AudioPlayerIsInPlayerScreen extends AudioPlayerState {
   const AudioPlayerIsInPlayerScreen(
       {required bool audioPlay,
       required bool? audioPause,
       required AudioCategory? audio})
       : super(audioPlay: audioPlay, audioPause: audioPause, audio: audio);
-} 
- 
-
-
+}
 
 extension GetAudio on AudioPlayerState {
   AudioCategory? get audio {

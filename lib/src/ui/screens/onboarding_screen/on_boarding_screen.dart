@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mediate/src/blocs/auth_bloc/auth_bloc.dart';
+import 'package:mediate/src/blocs/auth_bloc/auth_event.dart';
 
-import 'package:mediate/services/auth_bloc/auth_bloc.dart';
-import 'package:mediate/services/auth_bloc/auth_event.dart';
-import 'package:mediate/widgets/custom_login_button.dart';
+import 'package:mediate/src/ui/widgets/custom_login_button.dart';
 
 class OnBoardingScreen extends StatelessWidget {
   const OnBoardingScreen({Key? key}) : super(key: key);

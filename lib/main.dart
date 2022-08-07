@@ -2,30 +2,34 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/data/data_private.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:mediate/firebase_options.dart';
-import 'package:mediate/screens/loading/loading_screen.dart';
-import 'package:mediate/screens/home/home_screen.dart';
-import 'package:mediate/screens/login_signUp/login_screen.dart';
-import 'package:mediate/screens/login_signUp/sign_up_screen.dart';
-import 'package:mediate/screens/onboarding_screen/on_boarding_screen.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_bloc.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
+
+import 'src/blocs/audio_player_bloc/audio_player_bloc.dart';
+import 'src/blocs/audio_player_bloc/audio_player_event.dart';
+import 'src/blocs/auth_bloc/auth_bloc.dart';
+import 'src/blocs/auth_bloc/auth_event.dart';
+import 'src/blocs/auth_bloc/login_auth_state.dart';
+import 'src/resources/data/data_private.dart';
+import 'src/ui/dialogs/show_auth_error.dart';
+import 'src/ui/screens/home/home_screen.dart';
+import 'src/ui/screens/loading/loading_screen.dart';
+import 'src/ui/screens/login_signUp/login_screen.dart';
+import 'src/ui/screens/login_signUp/sign_up_screen.dart';
+import 'src/ui/screens/onboarding_screen/on_boarding_screen.dart';
 
 
-import 'dialogs/show_auth_error.dart';
-
-import 'services/auth_bloc/auth_bloc.dart';
-import 'services/auth_bloc/auth_event.dart';
-import 'services/auth_bloc/login_auth_state.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
   runApp(const MyApp());
+  FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {
@@ -39,13 +43,11 @@ class MyApp extends StatelessWidget {
           BlocProvider(
               create: (context) => AuthBloc()..add(AuthEventInitialize())),
           BlocProvider(
-              create: (context) =>
-                  AudioPlayerBloc()
+              create: (context) => AudioPlayerBloc()
                 ..add(AudioPlayerInitialEvent(audio: audio1Nature)))
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,
-
             theme: ThemeData(
               // navigationBarTheme
               //     NavigationBarThemeData(backgroundColor: Color(0x00ffffff)),

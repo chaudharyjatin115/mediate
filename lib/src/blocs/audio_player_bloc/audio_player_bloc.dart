@@ -1,10 +1,11 @@
 import 'package:just_audio/just_audio.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mediate/data/data_private.dart';
 
-import 'package:mediate/services/audio_player_bloc/audio_player_event.dart';
-import 'package:mediate/services/audio_player_bloc/audio_player_state.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_event.dart';
+import 'package:mediate/src/blocs/audio_player_bloc/audio_player_state.dart';
+
+import '../../resources/data/data_private.dart';
 
 class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
   AudioPlayerBloc()

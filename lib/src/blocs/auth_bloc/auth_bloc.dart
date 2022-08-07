@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:mediate/services/auth/auth_error.dart';
-import 'package:mediate/services/auth_bloc/auth_event.dart';
-import 'package:mediate/services/auth_bloc/login_auth_state.dart';
+import 'package:mediate/src/blocs/auth_bloc/auth_error.dart';
+
+import 'package:mediate/src/blocs/auth_bloc/auth_event.dart';
+import 'package:mediate/src/blocs/auth_bloc/login_auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc() : super(const AuthStateLoggedOut(isLoading: false)) {

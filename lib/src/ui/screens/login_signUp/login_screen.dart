@@ -2,15 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:mediate/extensions/if_debugging.dart';
-import 'package:mediate/services/auth_bloc/auth_event.dart';
+import 'package:mediate/src/blocs/auth_bloc/auth_bloc.dart';
+import 'package:mediate/src/blocs/auth_bloc/auth_event.dart';
+import 'package:mediate/src/ui/widgets/already_account_widget.dart';
+import 'package:mediate/src/ui/widgets/custom_input_field.dart';
+import 'package:mediate/src/ui/widgets/third_party_signin_button.dart';
+import 'package:mediate/src/ui/widgets/welcome_text_login.dart';
 
-import 'package:mediate/widgets/already_account_widget.dart';
-import 'package:mediate/widgets/custom_input_field.dart';
-import 'package:mediate/widgets/custom_login_button.dart';
-import 'package:mediate/widgets/third_party_signin_button.dart';
-import 'package:mediate/widgets/welcome_text_login.dart';
-
-import '../../services/auth_bloc/auth_bloc.dart';
+import '../../widgets/custom_login_button.dart';
 
 class LoginView extends HookWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -72,7 +71,6 @@ class LoginView extends HookWidget {
                     },
                     assetLink: 'assets/images/google-logo.png',
                   ),
-                
                 ],
               ),
               const SizedBox(

@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart' show immutable;
-import 'package:mediate/models/models.dart';
+
+import 'package:mediate/src/models/models.dart';
 
 @immutable
 abstract class AudioPlayerEvent {}
@@ -24,4 +25,3 @@ class AudioPlayerInitialEvent implements AudioPlayerEvent {
 
   AudioPlayerInitialEvent({required this.audio});
 }
-

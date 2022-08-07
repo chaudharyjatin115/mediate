@@ -1,4 +1,4 @@
-import 'package:mediate/models/models.dart';
+import 'package:mediate/src/models/models.dart';
 
 // nature audios refrence category
 final audio1Nature = AudioCategory(
