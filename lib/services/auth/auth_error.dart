@@ -14,6 +14,7 @@ Map<String, AuthError> authErrorMapping = {
   'requires-recent-login': const AuthErrorRequiresRecentLogin(),
   'network-request-failed': const AuthErrorNetworkRequestFailed(),
   'too-many-requests': const AuthErrorTooManyRequests(),
+  'sign-in-failed': const AuthErrorSignInFailed()
 
 };
 
@@ -112,4 +113,9 @@ class AuthErrorTooManyRequests extends AuthError {
       : super(
             dialogText: 'theres an issue with network',
             dialogTitle: 'network error ');
+}
+@immutable
+class AuthErrorSignInFailed extends AuthError {
+  const AuthErrorSignInFailed()
+      : super(dialogText: 'sign in failed ', dialogTitle: 'sign in failed');
 }
