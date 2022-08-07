@@ -1,5 +1,5 @@
 # mediate
-A beautifulj Streaming app with a nice collection of study and sleep music  made with flutter
+A beautiful Streaming app with a nice collection of study and sleep music  made with flutter
 
 ## Getting Started
 
