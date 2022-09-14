@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:mediate/extensions/if_debugging.dart';
+
 import 'package:mediate/src/blocs/auth_bloc/auth_bloc.dart';
 import 'package:mediate/src/blocs/auth_bloc/auth_event.dart';
 import 'package:mediate/src/ui/widgets/already_account_widget.dart';
@@ -17,9 +17,9 @@ class LoginView extends HookWidget {
   @override
   Widget build(BuildContext context) {
     final emailController = useTextEditingController(
-        text: 'chaudharyjatin115@gmail.com'.ifDebugging);
+      );
     final passwordController =
-        useTextEditingController(text: 'J-56789albdb'.ifDebugging);
+        useTextEditingController();
     return Scaffold(
       body: ListView(children: [
         Column(

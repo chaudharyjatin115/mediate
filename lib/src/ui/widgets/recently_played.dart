@@ -7,7 +7,7 @@ import 'package:mediate/src/resources/data/data_private.dart';
 import 'package:mediate/src/ui/widgets/cached_image_provider.dart';
 
 class RecentlyPlayed extends StatelessWidget {
-  RecentlyPlayed({
+  const RecentlyPlayed({
     Key? key,
   }) : super(key: key);
 

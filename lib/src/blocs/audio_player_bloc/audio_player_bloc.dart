@@ -20,7 +20,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
         emit(AudioPlayState(
             audioPlay: true, audioPause: false, audio: event.audio));
       } on PlayerException catch (e) {
-        print(state.audio!.audioUrl);
+       
         emit(
           AudioPlayerErrorState(
               error: e.toString(),
@@ -34,7 +34,7 @@ class AudioPlayerBloc extends Bloc<AudioPlayerEvent, AudioPlayerState> {
     on<AudioEventStop>((event, emit) async {
       try {
         audioPlayer1.pause();
-        print(event.audio.name);
+      
         emit(AudioPauseState(
           audioPause: true,
           audioPlay: false,
