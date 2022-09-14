@@ -74,6 +74,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       emit(const AuthStateLoggedOut(isLoading: false));
     });
 
+    on<AuthEventGotoLogin>(
+      (event, emit) => AuthStateIsInLoginView(isLoading: false),
+    );
     on<AuthEventGoogleSignIn>(
       (event, emit) async {
         const AuthStateLoggedOut(isLoading: false);

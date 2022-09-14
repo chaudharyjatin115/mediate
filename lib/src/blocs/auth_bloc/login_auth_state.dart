@@ -46,6 +46,12 @@ class AuthStateIsInRegistrationView extends AuthState {
 }
 
 @immutable
+class AuthStateIsInLoginView extends AuthState {
+  AuthStateIsInLoginView({required bool isLoading})
+      : super(isLoading: isLoading);
+}
+
+@immutable
 class AuthStateIsFirstRun extends AuthState {
   const AuthStateIsFirstRun({required bool isLoading})
       : super(isLoading: isLoading);
@@ -62,4 +68,3 @@ extension GetUser on AuthState {
     }
   }
 }
-

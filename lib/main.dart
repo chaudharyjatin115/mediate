@@ -19,8 +19,6 @@ import 'src/ui/screens/login_signUp/login_screen.dart';
 import 'src/ui/screens/login_signUp/sign_up_screen.dart';
 import 'src/ui/screens/onboarding_screen/on_boarding_screen.dart';
 
-
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
@@ -68,6 +66,8 @@ class MyApp extends StatelessWidget {
                   return const SignUpScreen();
                 } else if (authState is AuthStateIsFirstRun) {
                   return const OnBoardingScreen();
+                } else if (authState is AuthStateIsInLoginView) {
+                  return const LoginView();
                 } else {
                   return Container();
                 }
