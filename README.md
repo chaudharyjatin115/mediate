@@ -8,6 +8,4 @@ configure your firebase project and connect the app to it and run
 
 
 
-
-![Screenshot_20220914-101035_mediate](https://user-images.githubusercontent.com/21226291/190061950-d6ee193a-53a6-41fb-bc1c-8ce961f2d589.png)
-![Screenshot_20220914-101043_mediate](https://user-images.githubusercontent.com/21226291/190062089-4f987013-4346-4f7b-8de1-9ae00aa462a7.png)
+![mockup](https://user-images.githubusercontent.com/21226291/192930659-afe305ca-2fbd-4c64-83c1-c34586d2e9d0.jpg)
